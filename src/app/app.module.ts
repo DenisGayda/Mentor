@@ -12,7 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
         TraineeComponent,
         MethorComponent,
         ManagerComponent,
-        AdminComponent
+        AdminComponent,
     ],
     imports: [
         BrowserModule,
