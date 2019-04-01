@@ -1,4 +1,8 @@
-<ng-container *ngFor = "let item of items">
-    
+<ng-container  *ngFor = "let item of items">
+    <ng-template [ngIf] = "item">
+        <div>
+            {{item}}
+        </div>
+    </ng-template>
 </ng-container>
 
