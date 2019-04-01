@@ -21,7 +21,8 @@ before_script:
   - npm install -g @agm/core
   - npm install -g karma
 script:
-- karma start ./src/karma.conf.js --single-run
+- ng lint
+- ng test
 - ng build --prod --aot
 after_success:
 - firebase deploy --project mentor-andersen --token $FIREBASE_TOKEN
