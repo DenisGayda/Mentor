@@ -1,9 +1,13 @@
 <form [formGroup]="authFormGroup">
-    <input formControlName="email"
-           placeholder="email"
-           type="text">
-    <input formControlName="password"
-           placeholder="password"
-           type="password">
+    <mat-form-field>
+        <input formControlName="email"
+               placeholder="email"
+               type="text">
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="password"
+               placeholder="password"
+               type="password">
+    </mat-form-field>
 </form>
 <button (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
