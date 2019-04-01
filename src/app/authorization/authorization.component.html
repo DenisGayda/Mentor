@@ -1,13 +1,54 @@
-<form [formGroup]="authFormGroup">
-    <mat-form-field>
-        <input formControlName="email"
-               placeholder="email"
-               type="text">
-    </mat-form-field>
-    <mat-form-field>
-        <input formControlName="password"
-               placeholder="password"
-               type="password">
-    </mat-form-field>
-</form>
-<button (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
+ <form *ngIf="mode === 'SignIn'" [formGroup]="authFormGroup">
+        <mat-form-field>
+            <input matInput
+                   formControlName="email"
+                   placeholder="email"
+                   type="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                   formControlName="password"
+                   placeholder="password"
+                   type="password">
+        </mat-form-field>
+        <button mat-raised-button
+                color="primary"
+                (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
+     <button mat-button
+             (click)="changeMode('SignUp')">SignUp</button>
+     <p *ngIf="error">{{error}}</p>
+ </form>
+
+ <form *ngIf="mode === 'SignUp'" [formGroup]="signUpFormGroup">
+     <mat-form-field>
+         <input matInput
+                formControlName="email"
+                placeholder="email"
+                type="email">
+     </mat-form-field>
+     <div class="passwords" formGroupName="passwords">
+         <mat-form-field>
+             <input matInput
+                    formControlName="password"
+                    placeholder="password"
+                    type="password">
+         </mat-form-field>
+         <mat-form-field>
+             <input matInput
+                    [errorStateMatcher]="matcher"
+                    formControlName="repeatPassword"
+                    placeholder="repeat password"
+                    type="password">
+             <mat-error *ngIf="signUpFormGroup.controls['passwords'].hasError('passwordValidator')">
+                 Passwords not equal
+             </mat-error>
+         </mat-form-field>
+     </div>
+     <button mat-raised-button
+             [disabled]="!signUpFormGroup.valid"
+             color="primary" (click)="signUpClick(dataFromForm.email, dataFromForm.password)">Sign Up</button>
+     <button mat-button (click)="changeMode('SignIn')">Sign In</button>
+     <p *ngIf="signUpError">{{signUpError}}</p>
+ </form>
+
+
