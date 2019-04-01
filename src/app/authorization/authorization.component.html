@@ -1,9 +1,9 @@
-<form [formGroup]="authFormGroup" action="">
+<form [formGroup]="authFormGroup">
     <input formControlName="email"
            placeholder="email"
            type="text">
     <input formControlName="password"
            placeholder="password"
-           type="text">
+           type="password">
 </form>
-<button>Sign In</button>
+<button (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
