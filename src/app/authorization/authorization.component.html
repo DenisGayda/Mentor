@@ -1,15 +1,19 @@
  <form *ngIf="mode === 'SignIn'" [formGroup]="authFormGroup">
         <mat-form-field>
-            <input matInput
-                   formControlName="email"
-                   placeholder="email"
-                   type="email">
+            <label>
+                <input matInput
+                       formControlName="email"
+                       placeholder="email"
+                       type="email">
+            </label>
         </mat-form-field>
         <mat-form-field>
-            <input matInput
-                   formControlName="password"
-                   placeholder="password"
-                   type="password">
+            <label>
+                <input matInput
+                       formControlName="password"
+                       placeholder="password"
+                       type="password">
+            </label>
         </mat-form-field>
         <button mat-raised-button
                 color="primary"
@@ -21,24 +25,30 @@
 
  <form *ngIf="mode === 'SignUp'" [formGroup]="signUpFormGroup">
      <mat-form-field>
-         <input matInput
-                formControlName="email"
-                placeholder="email"
-                type="email">
+         <label>
+             <input matInput
+                    formControlName="email"
+                    placeholder="email"
+                    type="email">
+         </label>
      </mat-form-field>
      <div class="passwords" formGroupName="passwords">
          <mat-form-field>
-             <input matInput
-                    formControlName="password"
-                    placeholder="password"
-                    type="password">
+             <label>
+                 <input matInput
+                        formControlName="password"
+                        placeholder="password"
+                        type="password">
+             </label>
          </mat-form-field>
          <mat-form-field>
-             <input matInput
-                    [errorStateMatcher]="matcher"
-                    formControlName="repeatPassword"
-                    placeholder="repeat password"
-                    type="password">
+             <label>
+                 <input matInput
+                        [errorStateMatcher]="matcher"
+                        formControlName="repeatPassword"
+                        placeholder="repeat password"
+                        type="password">
+             </label>
              <mat-error *ngIf="signUpFormGroup.controls['passwords'].hasError('passwordValidator')">
                  Passwords not equal
              </mat-error>
