@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 @Component({
   selector: 'app-manager',
   templateUrl: './manager.component.html',
-  styleUrls: ['./manager.component.css']
+  styleUrls: ['./manager.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ManagerComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
