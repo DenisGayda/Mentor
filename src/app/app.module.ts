@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { AuthorizationComponent } from './authorization/authorization.component';
+import { AuthorizationPageComponent } from './authorization/authorization.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule , MatButtonModule, MatFormFieldModule} from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
@@ -13,7 +13,7 @@ import {AuthService} from './auth.service';
 @NgModule({
     declarations: [
         AppComponent,
-        AuthorizationComponent,
+        AuthorizationPageComponent,
     ],
     imports: [
         BrowserModule,

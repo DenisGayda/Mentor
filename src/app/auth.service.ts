@@ -6,14 +6,13 @@ import UserCredential = firebase.auth.UserCredential;
     providedIn: 'root',
 })
 export class AuthService {
+    constructor(private afAuth: AngularFireAuth) { }
 
-    constructor(public afAuth: AngularFireAuth) { }
-
-    signIn(email: string, password: string): Promise<UserCredential> {
+    public signIn(email: string, password: string): Promise<UserCredential> {
         return  this.afAuth.auth.signInWithEmailAndPassword(email, password);
     }
 
-    signUp(email: string, password: string): Promise<UserCredential> {
+    public signUp(email: string, password: string): Promise<UserCredential> {
         return  this.afAuth.auth.createUserWithEmailAndPassword(email, password);
     }
 }
