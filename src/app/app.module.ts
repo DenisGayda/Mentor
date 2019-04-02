@@ -7,6 +7,8 @@ import { environment } from '../environments/environment';
 import {CloudStoreService} from './services/CloudStoreService/cloud-store.service';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AppRouterModule} from './app-router/app-router.module';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -18,6 +20,8 @@ import {AppRouterModule} from './app-router/app-router.module';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
         AppRouterModule,
+        CommonModule,
+        RouterModule,
     ],
     providers: [CloudStoreService],
     bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
- <form *ngIf="mode === 'SignIn'" [formGroup]="authFormGroup">
+ <form [formGroup]="authFormGroup">
         <mat-form-field>
             <label>
                 <input matInput
@@ -21,43 +21,6 @@
      <button mat-button
              (click)="changeMode('SignUp')">SignUp</button>
      <p *ngIf="error$">{{error$ | async}}</p>
- </form>
- <form *ngIf="mode === 'SignUp'" [formGroup]="signUpFormGroup">
-     <mat-form-field>
-         <label>
-             <input matInput
-                    formControlName="email"
-                    placeholder="email"
-                    type="email">
-         </label>
-     </mat-form-field>
-     <div class="passwords" formGroupName="passwords">
-         <mat-form-field>
-             <label>
-                 <input matInput
-                        formControlName="password"
-                        placeholder="password"
-                        type="password">
-             </label>
-         </mat-form-field>
-         <mat-form-field>
-             <label>
-                 <input matInput
-                        [errorStateMatcher]="matcher"
-                        formControlName="repeatPassword"
-                        placeholder="repeat password"
-                        type="password">
-             </label>
-             <mat-error *ngIf="signUpFormGroup.controls['passwords'].hasError('passwordValidator')">
-                 Passwords not equal
-             </mat-error>
-         </mat-form-field>
-     </div>
-     <button mat-raised-button
-             [disabled]="!signUpFormGroup.valid"
-             color="primary" (click)="signUpClick(dataFromForm.email, dataFromForm.password)">Sign Up</button>
-     <button mat-button (click)="changeMode('SignIn')">Sign In</button>
-     <p *ngIf="signUpError$">{{signUpError$}}</p>
  </form>
 
 

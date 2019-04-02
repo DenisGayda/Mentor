@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthInterface} from '../Interfaces/AuthInterface';
 import {AuthService} from '../services/AuthService/auth.service';
-import {Matcher, passwordsValidator} from '../Validators/AuthorizationValidators';
 import { Subject} from 'rxjs';
 import {CloudStoreService} from '../services/CloudStoreService/cloud-store.service';
 import {UserFirestoreInterface} from '../Interfaces/UserFirestoreIterface';
@@ -17,11 +16,8 @@ import {Router} from '@angular/router';
 export class AuthorizationPageComponent implements OnInit {
     public mode = 'SignIn';
     public authFormGroup: FormGroup;
-    public signUpFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
     public error$: Subject<string> = new Subject();
-    public signUpError$: Subject<string> = new Subject();
-    public matcher = new Matcher();
 
     constructor(private fb: FormBuilder,
                 private authService: AuthService,
@@ -36,8 +32,6 @@ export class AuthorizationPageComponent implements OnInit {
 
         this.signInFormInit(minLength, maxLength);
         this.signInFormSubscribe();
-        this.signUpFormInit(minLength, maxLength);
-        this.signUpFormSubscribe();
     }
 
     public signIn(email: string, password: string): void {
@@ -56,17 +50,6 @@ export class AuthorizationPageComponent implements OnInit {
                     this.error$.next('Wrong password');
                 }
             });
-    }
-
-    public signUpClick(email: string, password: string): void {
-        if (this.signUpFormGroup.valid) {
-            this.authService.signUp(email, password)
-                .catch(error => {
-                    if (error.code === 'auth/email-already-in-use') {
-                        this.signUpError$.next('Email already used');
-                    }
-                });
-        }
     }
 
     public changeMode(mode): void {
@@ -104,35 +87,5 @@ export class AuthorizationPageComponent implements OnInit {
     private signInFormSubscribe(): void {
         this.authFormGroup.valueChanges
             .subscribe(data => this.dataFromForm = data);
-    }
-
-    private signUpFormInit(minLength: number, maxLength: number): void {
-        this.signUpFormGroup = this.fb.group({
-            email: ['', [
-                Validators.required,
-                Validators.email,
-            ]],
-            passwords: new FormGroup({
-                password: new FormControl('', [
-                    Validators.required,
-                    Validators.minLength(minLength),
-                    Validators.maxLength(maxLength),
-                ]),
-                repeatPassword: new FormControl('', [
-                    Validators.required,
-                    Validators.minLength(minLength),
-                    Validators.maxLength(maxLength),
-                ]),
-            }, [passwordsValidator]),
-        });
-    }
-
-    private signUpFormSubscribe(): void {
-        this.signUpFormGroup.valueChanges
-            .subscribe(data => {
-                data.password = data.passwords.password;
-                delete data.passwords;
-                this.dataFromForm = data;
-            });
     }
 }
