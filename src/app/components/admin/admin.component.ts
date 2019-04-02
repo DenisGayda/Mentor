@@ -5,3 +5,4 @@ import { Component, ChangeDetectionStrategy} from '@angular/core';
     styleUrls: ['./admin.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+export class AdminComponent {}
