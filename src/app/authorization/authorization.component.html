@@ -20,9 +20,8 @@
                 (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
      <button mat-button
              (click)="changeMode('SignUp')">SignUp</button>
-     <p *ngIf="error">{{error | async}}</p>
+     <p *ngIf="error$">{{error$ | async}}</p>
  </form>
-
  <form *ngIf="mode === 'SignUp'" [formGroup]="signUpFormGroup">
      <mat-form-field>
          <label>
@@ -58,7 +57,7 @@
              [disabled]="!signUpFormGroup.valid"
              color="primary" (click)="signUpClick(dataFromForm.email, dataFromForm.password)">Sign Up</button>
      <button mat-button (click)="changeMode('SignIn')">Sign In</button>
-     <p *ngIf="signUpError">{{signUpError}}</p>
+     <p *ngIf="signUpError$">{{signUpError$}}</p>
  </form>
 
 

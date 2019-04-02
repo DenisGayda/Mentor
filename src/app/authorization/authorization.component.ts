@@ -1,9 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthInterface} from '../Interfaces/AuthInterface';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../services/AuthService/auth.service';
 import {Matcher, passwordsValidator} from '../Validators/AuthorizationValidators';
 import { Subject} from 'rxjs';
+import {CloudStoreService} from '../services/CloudStoreService/cloud-store.service';
+import {UserFirestoreInterface} from '../Interfaces/UserFirestoreIterface';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-authorization',
@@ -16,11 +19,15 @@ export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public signUpFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
-    public error: Subject<string> = new Subject();
-    public signUpError: Subject<string> = new Subject();
+    public error$: Subject<string> = new Subject();
+    public signUpError$: Subject<string> = new Subject();
     public matcher = new Matcher();
 
-    constructor(private fb: FormBuilder, private authService: AuthService) {
+    constructor(private fb: FormBuilder,
+                private authService: AuthService,
+                private cloudStoreService: CloudStoreService,
+                private router: Router,
+                ) {
     }
 
     ngOnInit(): void {
@@ -35,12 +42,18 @@ export class AuthorizationPageComponent implements OnInit {
 
     public signIn(email: string, password: string): void {
         this.authService.signIn(email, password)
-            .then(data => localStorage.user = data)
+            .then(data => {
+                localStorage.user = JSON.stringify(data.user);
+
+                return  this.cloudStoreService
+                    .getUserAdditionalInfo$(JSON.parse(localStorage.getItem('user')).uid)
+                    .subscribe((value: UserFirestoreInterface) => this.checkUserRole(value.role));
+            })
             .catch(error => {
                 if (error.code === 'auth/user-not-found') {
-                    this.error.next('User error');
+                    this.error$.next('User error');
                 } else if (error.code === 'auth/wrong-password') {
-                    this.error.next('Wrong password');
+                    this.error$.next('Wrong password');
                 }
             });
     }
@@ -50,7 +63,7 @@ export class AuthorizationPageComponent implements OnInit {
             this.authService.signUp(email, password)
                 .catch(error => {
                     if (error.code === 'auth/email-already-in-use') {
-                        this.signUpError.next('Email already used');
+                        this.signUpError$.next('Email already used');
                     }
                 });
         }
@@ -58,6 +71,25 @@ export class AuthorizationPageComponent implements OnInit {
 
     public changeMode(mode): void {
         this.mode = mode;
+    }
+
+    private checkUserRole(role: string): void {
+        switch (role) {
+            case 'mentor':
+                this.router.navigate(['/mentor']);
+                break;
+            case 'admin':
+                this.router.navigate(['/admin']);
+                break;
+            case 'manager':
+                this.router.navigate(['/manager']);
+                break;
+            case 'trainee':
+                this.router.navigate(['/trainee']);
+                break;
+            default:
+                this.router.navigate(['/']);
+        }
     }
 
     private signInFormInit(minLength: number, maxLength: number): void {
