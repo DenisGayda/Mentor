@@ -20,7 +20,7 @@
                 (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
      <button mat-button
              (click)="changeMode('SignUp')">SignUp</button>
-     <p *ngIf="error">{{error}}</p>
+     <p *ngIf="error">{{error | async}}</p>
  </form>
 
  <form *ngIf="mode === 'SignUp'" [formGroup]="signUpFormGroup">

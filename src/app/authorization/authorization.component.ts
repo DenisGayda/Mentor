@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthInterface} from '../Interfaces/AuthInterface';
 import {AuthService} from '../auth.service';
 import {Matcher, passwordsValidator} from '../Validators/AuthorizationValidators';
+import { Subject} from 'rxjs';
 
 @Component({
     selector: 'app-authorization',
@@ -15,8 +16,8 @@ export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public signUpFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
-    public error: string;
-    public signUpError: string;
+    public error: Subject<string> = new Subject();
+    public signUpError: Subject<string> = new Subject();
     public matcher = new Matcher();
 
     constructor(private fb: FormBuilder, private authService: AuthService) {
@@ -34,12 +35,12 @@ export class AuthorizationPageComponent implements OnInit {
 
     public signIn(email: string, password: string): void {
         this.authService.signIn(email, password)
-            .then(data => localStorage.user = data) // Here write what need do if user logged in
+            .then(data => localStorage.user = data)
             .catch(error => {
                 if (error.code === 'auth/user-not-found') {
-                    this.error = 'User with that email not found';
+                    this.error.next('User error');
                 } else if (error.code === 'auth/wrong-password') {
-                    this.error = 'Wrong password';
+                    this.error.next('Wrong password');
                 }
             });
     }
@@ -49,7 +50,7 @@ export class AuthorizationPageComponent implements OnInit {
             this.authService.signUp(email, password)
                 .catch(error => {
                     if (error.code === 'auth/email-already-in-use') {
-                        this.signUpError = 'Email already used';
+                        this.signUpError.next('Email already used');
                     }
                 });
         }
