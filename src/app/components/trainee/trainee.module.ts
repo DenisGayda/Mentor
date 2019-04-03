@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { TraineeComponent } from './trainee.component';
 
 @NgModule({
-    imports:      [],
-    declarations: [ TraineeComponent ],
-    bootstrap:    [ TraineeComponent ],
+    declarations: [TraineeComponent],
+    exports: [TraineeComponent],
 })
 export class TraineeModule { }

@@ -1,8 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import {AdminComponent} from './components/admin/admin.component';
-import {MethorComponent} from './components/methor/methor.component';
-import {TraineeComponent} from './components/trainee/trainee.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { MentorComponent } from './components/methor/mentor.component';
+import { TraineeComponent } from './components/trainee/trainee.component';
 import { ManagerComponent } from './components/manager/manager.component';
 
 describe('AppComponent', () => {
@@ -12,7 +12,7 @@ describe('AppComponent', () => {
                 AppComponent,
                 AdminComponent,
                 ManagerComponent,
-                MethorComponent,
+                MentorComponent,
                 TraineeComponent,
             ],
         }).compileComponents();

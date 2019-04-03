@@ -2,21 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { TraineeComponent } from './components/trainee/trainee.component';
-import { MethorComponent } from './components/methor/methor.component';
-import { ManagerComponent } from './components/manager/manager.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { MentorModule } from './components/methor/methor.module';
+import { ManagerModule } from './components/manager/manager.module';
+import { TraineeModule } from './components/trainee/trainee.module';
+import { AdminModule } from './components/admin/admin.module';
 @NgModule({
     declarations: [
         AppComponent,
-        TraineeComponent,
-        MethorComponent,
-        ManagerComponent,
-        AdminComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        MentorModule,
+        ManagerModule,
+        TraineeModule,
+        AdminModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

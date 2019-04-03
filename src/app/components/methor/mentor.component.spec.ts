@@ -1,18 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MethorComponent } from './methor.component';
+import { MentorComponent } from './mentor.component';
 
-describe('MethorComponent', () => {
-    let component: MethorComponent;
-    let fixture: ComponentFixture<MethorComponent>;
+describe('MentorComponent', () => {
+    let component: MentorComponent;
+    let fixture: ComponentFixture<MentorComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ MethorComponent ],
+            declarations: [ MentorComponent ],
         })
     .compileComponents();
     }));
     beforeEach(() => {
-        fixture = TestBed.createComponent(MethorComponent);
+        fixture = TestBed.createComponent(MentorComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
