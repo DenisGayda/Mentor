@@ -8,7 +8,7 @@ import {CloudStoreService} from './services/CloudStoreService/cloud-store.servic
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AppRouterModule} from './app-router/app-router.module';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,7 +21,8 @@ import {RouterModule} from '@angular/router';
         AngularFirestoreModule,
         AppRouterModule,
         CommonModule,
-        RouterModule,
+        ReactiveFormsModule,
+        FormsModule,
     ],
     providers: [CloudStoreService],
     bootstrap: [AppComponent],
