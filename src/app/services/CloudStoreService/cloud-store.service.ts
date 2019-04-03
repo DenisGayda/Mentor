@@ -3,9 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { UserFirestoreInterface } from '../../Interfaces/UserFirestoreIterface';
 import { Observable } from 'rxjs';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class CloudStoreService {
     private userCollectionName = 'Users';
     private userCollection: AngularFirestoreCollection<UserFirestoreInterface> = this.afs.collection(this.userCollectionName);
