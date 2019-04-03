@@ -9,7 +9,7 @@ describe('MentorComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ MentorComponent ],
         })
-    .compileComponents();
+            .compileComponents();
     }));
     beforeEach(() => {
         fixture = TestBed.createComponent(MentorComponent);
