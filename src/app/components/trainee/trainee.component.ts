@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 @Component({
     selector: 'app-trainee',
     templateUrl: './trainee.component.html',
