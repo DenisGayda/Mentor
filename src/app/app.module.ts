@@ -9,10 +9,11 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AppRouterModule} from './app-router/app-router.module';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { ListComponent } from './list/list.component';
 @NgModule({
     declarations: [
         AppComponent,
+        ListComponent,
     ],
     imports: [
         BrowserModule,
