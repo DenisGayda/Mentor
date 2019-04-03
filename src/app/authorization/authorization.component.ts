@@ -39,7 +39,7 @@ export class AuthorizationPageComponent implements OnInit {
             .then(data => {
                 localStorage.user = JSON.stringify(data.user);
 
-                return  this.cloudStoreService
+                return this.cloudStoreService
                     .getUserAdditionalInfo$(JSON.parse(localStorage.getItem('user')).uid)
                     .subscribe((value: UserFirestoreInterface) => this.checkUserRole(value.role));
             })
