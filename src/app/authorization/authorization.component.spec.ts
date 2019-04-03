@@ -7,6 +7,7 @@ import { CloudStoreService } from '../services/CloudStoreService/cloud-store.ser
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AuthorizationComponent', () => {
     let component: AuthorizationPageComponent;
@@ -19,7 +20,7 @@ describe('AuthorizationComponent', () => {
         when(authService.signUp(anything(), anything())).thenResolve(null);
 
         TestBed.configureTestingModule({
-            imports: [AuthModule],
+            imports: [AuthModule, BrowserAnimationsModule],
             providers: [
                 {provide: AuthService, useFactory: () => instance(authService)},
                 {provide: CloudStoreService, useFactory: () => instance(mock(CloudStoreService))},

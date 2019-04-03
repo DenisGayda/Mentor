@@ -7,7 +7,6 @@ import { AuthService } from '../../services/AuthService/auth.service';
 import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthRouterModule } from './auth-router.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
@@ -19,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatFormFieldModule,
         AngularFireAuthModule,
         AuthRouterModule,
-        BrowserAnimationsModule,
     ],
     declarations: [ AuthorizationPageComponent ],
     providers: [
