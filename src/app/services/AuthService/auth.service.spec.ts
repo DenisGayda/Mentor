@@ -7,6 +7,7 @@ describe('AuthService', () => {
     beforeEach(() => TestBed.configureTestingModule({
         providers: [
             {provide: AngularFireAuth, useFactory: () => instance(mock(AngularFireAuth))},
+            AuthService,
         ],
     }));
     it('should be created', () => {

@@ -7,6 +7,7 @@ describe('CloudStoreService', () => {
     beforeEach(() => TestBed.configureTestingModule({
         providers: [
             {provide: AngularFirestore, useFactory: () => instance(mock(AngularFirestore))},
+            CloudStoreService,
         ],
     }));
 
