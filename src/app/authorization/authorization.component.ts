@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthInterface} from '../Interfaces/AuthInterface';
-import {AuthService} from '../services/AuthService/auth.service';
-import { Subject} from 'rxjs';
-import {CloudStoreService} from '../services/CloudStoreService/cloud-store.service';
-import {UserFirestoreInterface} from '../Interfaces/UserFirestoreIterface';
-import {Router} from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthInterface } from '../Interfaces/AuthInterface';
+import { AuthService } from '../services/AuthService/auth.service';
+import { Subject } from 'rxjs';
+import { CloudStoreService } from '../services/CloudStoreService/cloud-store.service';
+import { UserFirestoreInterface } from '../Interfaces/UserFirestoreIterface';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-authorization',
