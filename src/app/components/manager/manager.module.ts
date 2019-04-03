@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { ManagerComponent } from './manager.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
-    imports:      [],
-    declarations: [ ManagerComponent ],
-    bootstrap:    [ ManagerComponent ],
+    imports: [CommonModule],
+    declarations: [ManagerComponent],
+    exports: [ManagerComponent],
 })
 export class ManagerModule { }

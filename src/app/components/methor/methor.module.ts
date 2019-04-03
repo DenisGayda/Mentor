@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { MethorComponent } from './methor.component';
+import { MentorComponent } from './mentor.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    imports:      [],
-    declarations: [ MethorComponent ],
-    bootstrap:    [ MethorComponent ],
+    imports: [CommonModule],
+    declarations: [MentorComponent],
+    exports: [MentorComponent],
 })
-export class MethorModule { }
+export class MentorModule { }
