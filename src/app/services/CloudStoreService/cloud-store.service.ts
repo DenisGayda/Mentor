@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class CloudStoreService {
-    private userCollectionName = 'Users';
-    private userCollection: AngularFirestoreCollection<UserFirestoreInterface> = this.afs.collection(this.userCollectionName);
+    public userCollectionName = 'Users';
+    public userCollection: AngularFirestoreCollection<UserFirestoreInterface> = this.afs.collection(this.userCollectionName);
 
     constructor(private afs: AngularFirestore) { }
 

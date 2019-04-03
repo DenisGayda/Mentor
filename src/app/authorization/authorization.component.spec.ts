@@ -17,7 +17,7 @@ describe('AuthorizationComponent', () => {
         const authService = mock(AuthService);
 
         when(authService.signIn(anything(), anything())).thenResolve(null);
-        when(authService.signUp(anything(), anything())).thenResolve(null);
+        when(authService.signUp(anything(), anything(), anything())).thenResolve(null);
 
         TestBed.configureTestingModule({
             imports: [AuthModule, BrowserAnimationsModule],
