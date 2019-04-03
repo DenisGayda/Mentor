@@ -23,7 +23,7 @@ describe('AuthorizationComponent', () => {
             imports: [AuthModule],
             providers: [
                 {provide: AuthService, useFactory: () => instance(authService)},
-                {provide: CloudStoreService, useFactory: () => instance(CloudStoreService)},
+                {provide: CloudStoreService, useFactory: () => instance(mock(CloudStoreService))},
                 {provide: Router, useFactory: () => instance(mock(Router))},
                 {provide: AngularFireAuth, useFactory: () => instance(mock(AngularFireAuth))},
                 {provide: AngularFirestore, useFactory: () => instance(mock(AngularFirestore))},
