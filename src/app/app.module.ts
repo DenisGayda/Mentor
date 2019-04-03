@@ -6,10 +6,10 @@ import { ManagerModule } from './components/manager/manager.module';
 import { TraineeModule } from './components/trainee/trainee.module';
 import { AdminModule } from './components/admin/admin.module';
 import { MentorComponent } from './components/mentor/mentor.component';
+
 @NgModule({
     declarations: [
         AppComponent,
-        MentorComponent,
     ],
     imports: [
         BrowserModule,
