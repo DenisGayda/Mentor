@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
-import {UserFirestoreInterface} from '../../Interfaces/UserFirestoreIterface';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { UserFirestoreInterface } from '../../Interfaces/UserFirestoreIterface';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
