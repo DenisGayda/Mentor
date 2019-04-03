@@ -1,5 +1,5 @@
 <div *ngFor = "let item of items">
-  <ng-container *ngTemplateOutlet = " itemTemplate || defaultTemplate"></ng-container>
+  <ng-container *ngTemplateOutlet = "itemTemplate || defaultTemplate"></ng-container>
 </div>
 <ng-template #defaultTemplate>
   <span>Не передан шаблон</span>
