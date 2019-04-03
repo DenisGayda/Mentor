@@ -4,11 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import {CloudStoreService} from './services/CloudStoreService/cloud-store.service';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {AppRouterModule} from './app-router/app-router.module';
-import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CloudStoreService } from './services/CloudStoreService/cloud-store.service';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AppRouterModule } from './app-router/app-router.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -23,8 +24,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         ReactiveFormsModule,
         FormsModule,
     ],
-    providers: [CloudStoreService],
-    bootstrap: [AppComponent],
+    providers: [ CloudStoreService ],
+    bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }

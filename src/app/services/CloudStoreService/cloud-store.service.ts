@@ -12,7 +12,7 @@ export class CloudStoreService {
 
     constructor(private afs: AngularFirestore) { }
 
-    public getUserAdditionalInfo$(uid): Observable<UserFirestoreInterface> {
+    public getUserAdditionalInfo$(uid: string): Observable<UserFirestoreInterface> {
         return  this.userCollection.doc<UserFirestoreInterface>(uid).valueChanges();
     }
 }

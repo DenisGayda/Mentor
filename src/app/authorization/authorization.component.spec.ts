@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {anything, instance, mock, when} from 'ts-mockito';
+import { anything, instance, mock, when } from 'ts-mockito';
 
 import { AuthorizationPageComponent } from './authorization.component';
-import {AuthModule} from './authModule/auth.module';
-import {AuthService} from '../services/AuthService/auth.service';
-import {CloudStoreService} from '../services/CloudStoreService/cloud-store.service';
-import {Router} from '@angular/router';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
+import { AuthModule } from './authModule/auth.module';
+import { AuthService } from '../services/AuthService/auth.service';
+import { CloudStoreService } from '../services/CloudStoreService/cloud-store.service';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 describe('AuthorizationComponent', () => {
     let component: AuthorizationPageComponent;
@@ -15,9 +15,6 @@ describe('AuthorizationComponent', () => {
 
     beforeEach(async(() => {
         const authService = mock(AuthService);
-        const router = mock(Router);
-        const angularFireAuth = mock(AngularFireAuth);
-        const angularFirestore = mock(AngularFirestore);
 
         when(authService.signIn(anything(), anything())).thenResolve(null);
         when(authService.signUp(anything(), anything())).thenResolve(null);
@@ -27,9 +24,9 @@ describe('AuthorizationComponent', () => {
             providers: [
                 {provide: AuthService, useFactory: () => instance(authService)},
                 {provide: CloudStoreService, useFactory: () => instance(CloudStoreService)},
-                {provide: Router, useFactory: () => instance(router)},
-                {provide: AngularFireAuth, useFactory: () => instance(angularFireAuth)},
-                {provide: AngularFirestore, useFactory: () => instance(angularFirestore)},
+                {provide: Router, useFactory: () => instance(mock(Router))},
+                {provide: AngularFireAuth, useFactory: () => instance(mock(AngularFireAuth))},
+                {provide: AngularFirestore, useFactory: () => instance(mock(AngularFirestore))},
             ],
         })
     .compileComponents();
