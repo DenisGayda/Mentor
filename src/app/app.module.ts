@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ManagerModule } from './components/manager/manager.module';
 import { TraineeModule } from './components/trainee/trainee.module';
 import { AdminModule } from './components/admin/admin.module';
-import { MentorComponent } from './components/mentor/mentor.component';
+import { MentorModule } from './components/mentor/mentor.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +14,7 @@ import { MentorComponent } from './components/mentor/mentor.component';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        MentorComponent,
+        MentorModule,
         ManagerModule,
         TraineeModule,
         AdminModule,
