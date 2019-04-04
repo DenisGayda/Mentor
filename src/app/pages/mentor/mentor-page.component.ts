@@ -2,8 +2,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-mentor',
-    templateUrl: './mentor.component.html',
-    styleUrls: ['./mentor.component.css'],
+    templateUrl: './mentor-page.component.html',
+    styleUrls: ['./mentor-page.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MentorComponent {}
+export class MentorPageComponent {}

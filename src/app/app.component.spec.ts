@@ -1,19 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { MentorComponent } from './components/mentor/mentor.component';
-import { TraineeComponent } from './components/trainee/trainee.component';
-import { ManagerComponent } from './components/manager/manager.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            imports: [ RouterTestingModule ],
             declarations: [
                 AppComponent,
-                AdminComponent,
-                ManagerComponent,
-                MentorComponent,
-                TraineeComponent,
             ],
         }).compileComponents();
     }));
