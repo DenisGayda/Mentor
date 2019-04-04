@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { anything, instance, mock, when } from 'ts-mockito';
-import { AuthorizationPageComponent } from './authorization.component';
+import { AuthorizationPageComponent } from './authorization-page.component';
 import { AuthModule } from './auth.module';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
