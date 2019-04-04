@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AppRouterModule } from './app-router.module';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app.component';
+import { ManagerPageModule } from './components/manager/manager-page-module';
+import { TraineePageModule } from './components/trainee/trainee-page-module';
+import { AdminPageModule } from './components/admin/admin-page-module';
+import { MentorPageModule } from './components/mentor/mentor-page-module';
 
 @NgModule({
     declarations: [
@@ -15,15 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     imports: [
         BrowserModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFirestoreModule,
-        AppRouterModule,
-        CommonModule,
-        ReactiveFormsModule,
-        FormsModule,
         BrowserAnimationsModule,
+        MentorPageModule,
+        ManagerPageModule,
+        TraineePageModule,
+        AdminPageModule,
     ],
-    bootstrap: [ AppComponent ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }

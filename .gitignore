@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+/reports
 # IDEs and editors
 /.idea
 .project
@@ -36,4 +37,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/reports
