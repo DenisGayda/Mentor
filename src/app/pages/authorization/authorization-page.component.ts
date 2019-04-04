@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-authorization',
-    templateUrl: './authorization.component.html',
-    styleUrls: ['./authorization.component.css'],
+    templateUrl: './authorization-page.component.html',
+    styleUrls: ['./authorization-page.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthorizationPageComponent implements OnInit {

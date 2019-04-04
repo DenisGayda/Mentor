@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthorizationPageComponent } from './authorization.component';
+import { AuthorizationPageComponent } from './authorization-page.component';
 
 const routes: Routes = [
     { path: '', component: AuthorizationPageComponent },
@@ -11,4 +11,4 @@ const routes: Routes = [
     imports: [ RouterModule.forChild(routes) ],
 })
 
-export class AuthRouterModule {}
+export class AuthPageRouterModule {}
