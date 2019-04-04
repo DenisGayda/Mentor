@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { anything, instance, mock, when } from 'ts-mockito';
 import { AuthorizationPageComponent } from './authorization-page.component';
-import { AuthModule } from './auth.module';
+import { AuthPageModule } from './auth-page.module';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ describe('AuthorizationComponent', () => {
         when(authService.signUp(anything(), anything(), anything())).thenResolve(null);
 
         TestBed.configureTestingModule({
-            imports: [AuthModule, BrowserAnimationsModule],
+            imports: [AuthPageModule, BrowserAnimationsModule],
             providers: [
                 {provide: AuthService, useFactory: () => instance(authService)},
                 {provide: CloudStoreService, useFactory: () => instance(mock(CloudStoreService))},

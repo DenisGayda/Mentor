@@ -6,7 +6,7 @@ import { MatInputModule , MatButtonModule, MatFormFieldModule } from '@angular/m
 import { AuthService } from '../../services/AuthService/auth.service';
 import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AuthRouterModule } from './auth-router.module';
+import { AuthPageRouterModule } from './auth-page-router.module';
 
 @NgModule({
     imports: [
@@ -17,7 +17,7 @@ import { AuthRouterModule } from './auth-router.module';
         MatButtonModule,
         MatFormFieldModule,
         AngularFireAuthModule,
-        AuthRouterModule,
+        AuthPageRouterModule,
     ],
     declarations: [ AuthorizationPageComponent ],
     providers: [
@@ -25,4 +25,4 @@ import { AuthRouterModule } from './auth-router.module';
         CloudStoreService,
     ],
 })
-export class AuthModule { }
+export class AuthPageModule { }
