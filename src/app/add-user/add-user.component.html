@@ -3,10 +3,13 @@
 <!--        Не указано имя-->
 <!--    </div>-->
     <mat-form-field class="example-full-width">
-        <input type="email" matInput placeholder="Email" name = "user.email"  [(ngModel)]="email" #_name="ngModel" required>
+        <input type="text" matInput placeholder="Name" name = "user.name" [(ngModel)]="user.name">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input type="text" matInput placeholder="Name" name = "user.name" [(ngModel)]="name">
+        <input type="text" matInput placeholder="Surname" name = "user.surname" [(ngModel)]="user.surname">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input type="email" matInput placeholder="Email" name = "user.email"  [(ngModel)]="user.email" #_name="ngModel" required>
     </mat-form-field>
     <button  (click)="addUser()" mat-raised-button>Создать</button>
 </form>
