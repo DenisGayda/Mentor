@@ -1,15 +1,12 @@
 <form class="example-form">
-<!--    <div [hidden]="_name.valid || _name.untouched" >-->
-<!--        Не указано имя-->
-<!--    </div>-->
     <mat-form-field class="example-full-width">
-        <input type="text" matInput placeholder="Name" name = "user.name" [(ngModel)]="user.name">
+        <input type="text" matInput placeholder="name" name = "name" [(ngModel)]="user.name" #name="ngModel" required>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input type="text" matInput placeholder="Surname" name = "user.surname" [(ngModel)]="user.surname">
+        <input type="text" matInput placeholder="surname" name = "surname" [(ngModel)]="user.surname" #surname="ngModel" required>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input type="email" matInput placeholder="Email" name = "user.email"  [(ngModel)]="user.email" #_name="ngModel" required>
+        <input type="email" matInput placeholder="email" name = "email"  [(ngModel)]="user.email" #email="ngModel" required  pattern="[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}">
     </mat-form-field>
-    <button  (click)="addUser()" mat-raised-button>Создать</button>
+    <button [disabled]="name.invalid || surname.invalid || email.invalid" (click)="addUser()" mat-raised-button>Создать</button>
 </form>
