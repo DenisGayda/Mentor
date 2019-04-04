@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { anything, instance, mock, when } from 'ts-mockito';
 import { AuthorizationPageComponent } from './authorization.component';
-import { AuthModule } from './authModule/auth.module';
-import { AuthService } from '../services/AuthService/auth.service';
-import { CloudStoreService } from '../services/CloudStoreService/cloud-store.service';
+import { AuthModule } from './auth.module';
+import { AuthService } from '../../services/AuthService/auth.service';
+import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';

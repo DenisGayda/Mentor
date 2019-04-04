@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthorizationPageComponent } from '../authorization.component';
+import { AuthorizationPageComponent } from './authorization.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule , MatButtonModule, MatFormFieldModule } from '@angular/material';
 import { AuthService } from '../../services/AuthService/auth.service';

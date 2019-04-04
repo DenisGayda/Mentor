@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthInterface } from '../Interfaces/auth-interface';
-import { AuthService } from '../services/AuthService/auth.service';
+import { UserFirestoreInterface } from '../../Interfaces/user-firestore-interface';
+import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
+import { AuthService } from '../../services/AuthService/auth.service';
+import { AuthInterface } from '../../Interfaces/auth-interface';
 import { Subject } from 'rxjs';
-import { CloudStoreService } from '../services/CloudStoreService/cloud-store.service';
-import { UserFirestoreInterface } from '../Interfaces/user-firestore-interface';
 import { Router } from '@angular/router';
 
 @Component({
