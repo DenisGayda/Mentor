@@ -1,0 +1,46 @@
+<form [formGroup]="addTestFormGroup">
+    <mat-form-field class="select">
+        <mat-label>Test Theme</mat-label>
+        <mat-select formControlName="theme">
+            <mat-option>
+                HTML
+            </mat-option>
+            <mat-option>
+                CSS
+            </mat-option>
+            <mat-option>
+                JS
+            </mat-option>
+            <mat-option>
+                Angular
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="question">
+        <textarea formControlName="question" placeholder="Here input your question" class="question" matInput type="text"></textarea>
+    </mat-form-field>
+    <div formArrayName="answers" class="answers">
+        <div *ngFor="let a of addTestFormGroup.controls.answers.controls, let i = index"
+             class="answers">
+            <mat-form-field>
+                <input formControlName="{{i}}" placeholder="Possible answer" matInput type="text">
+                <mat-icon *ngIf="addTestFormGroup.controls.answers.controls.length > 3"
+                    (click)="removeAnswer(i)"
+                          class="mat-18 delete">delete</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    <button (click)="addAnswer()" mat-raised-button color="primary" class="add-btn">
+        <mat-icon class="mat-18">add</mat-icon>
+    </button>
+    <div>
+        <mat-form-field class="correct-field">
+            <input formControlName="correctAnswer" matInput placeholder="Correct answer" type="text">
+        </mat-form-field>
+        <div class="footer">
+            <button mat-raised-button color="accent">
+                <mat-icon class="mat-18">check</mat-icon>
+            </button>
+        </div>
+    </div>
+</form>

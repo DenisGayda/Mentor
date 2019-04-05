@@ -8,6 +8,7 @@ import { AppRouterModule } from './app-router.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TestModule } from './components/test/test.module';
 
 @NgModule({
     declarations: [
@@ -22,12 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ReactiveFormsModule,
         FormsModule,
         BrowserAnimationsModule,
-        MatSelectModule,
-        MatDividerModule,
-        MatInputModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
+        TestModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

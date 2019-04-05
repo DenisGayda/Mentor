@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -8,6 +9,8 @@ const routes: Routes = [
     { path: 'manager', loadChildren: './pages/manager/manager-page.module#ManagerPageModule' },
     { path: 'mentor', loadChildren: './pages/mentor/mentor-page.module#MentorPageModule' },
     { path: 'trainee', loadChildren: './pages/trainee/trainee-page.module#TraineePageModule' },
+    { path: 'test', component: TestComponent },
+
 ];
 
 @NgModule({

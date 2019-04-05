@@ -9,5 +9,8 @@ import { ListComponent } from './list.component';
     declarations: [
         ListComponent,
     ],
+    exports: [
+        ListComponent
+    ]
 })
 export class ListModule { }
