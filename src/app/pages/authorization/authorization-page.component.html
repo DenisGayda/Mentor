@@ -1,20 +1,10 @@
  <form [formGroup]="authFormGroup">
-        <mat-form-field>
             <label>
-                <input matInput
-                       formControlName="email"
-                       placeholder="email"
-                       type="email">
+                <app-input-clear tp="text" holder="email" [control]="authFormGroup.controls['email']"></app-input-clear>
             </label>
-        </mat-form-field>
-        <mat-form-field>
             <label>
-                <input matInput
-                       formControlName="password"
-                       placeholder="password"
-                       type="password">
+                <app-input-clear tp="password" holder="password" [control]="authFormGroup.controls['password']"></app-input-clear>
             </label>
-        </mat-form-field>
         <button mat-raised-button
                 color="primary"
                 (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
