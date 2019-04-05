@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizItemComponent } from './quiz-item.component';
+import { QuizTaskComponent } from './quiz-task.component';
 import { MatRadioModule } from '@angular/material';
 
 @NgModule({
@@ -8,8 +8,7 @@ import { MatRadioModule } from '@angular/material';
         CommonModule,
         MatRadioModule,
     ],
-    declarations: [QuizItemComponent],
-    exports: [QuizItemComponent],
+    declarations: [QuizTaskComponent],
+    exports: [QuizTaskComponent],
 })
-export class QuizItemModule {
-}
+export class QuizTaskModule { }

@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizItemModule } from './components/quiz-item/quiz-item.module';
+import { QuizTaskModule } from './components/quiz-task/quiz-task.module';
 import { TimerModule } from './components/timer/timer.module';
 import { QuizComponent } from './quiz.component';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
-        QuizItemModule,
+        QuizTaskModule,
         TimerModule,
+        MatButtonModule,
     ],
     declarations: [
         QuizComponent,
@@ -17,5 +19,4 @@ import { QuizComponent } from './quiz.component';
         QuizComponent,
     ],
 })
-export class QuizModule {
-}
+export class QuizModule { }

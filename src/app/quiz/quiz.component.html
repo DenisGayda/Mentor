@@ -1,2 +1,26 @@
-<app-timer time="1" title="Времени осталось: "></app-timer>
-<app-quiz-item *ngFor="let task of tasks; let i = index" [task]="task"></app-quiz-item>
+<app-timer [time]="time" (ended)="completeQuiz()" title="Времени осталось: "></app-timer>
+
+<p>{{ tasksPagination }}</p>
+
+<app-quiz-task
+    *ngIf="tasks"
+    [task]="tasks[currentTaskIndex]"
+    [answerValue]="currentAnswer"
+    (answer)="addAnswer($event)">
+
+</app-quiz-task>
+
+<div class="controls">
+    <button [disabled]="isTaskFirst" (click)="prev()" color="primary" mat-stroked-button>Prev</button>
+    <button [disabled]="isTaskLast" (click)="next()" color="primary" mat-stroked-button>Next</button>
+</div>
+
+<button
+    [disabled]="!isAllAnswered"
+    (click)="completeQuiz()"
+    class="complete-btn"
+    color="primary"
+    mat-raised-button>
+
+    Complete test
+</button>

@@ -19,8 +19,8 @@ export class TimerComponent implements OnInit {
     @Input('time') timeMins: number;
     @Input('title') timerTitle = 'Time left: ';
 
-    public leftTimeMs;
     public indicationColor = 'rgba(255, 0, 0, 0)';
+    private leftTimeMs;
 
     constructor(private detectorRef: ChangeDetectorRef) { }
 
@@ -28,7 +28,7 @@ export class TimerComponent implements OnInit {
         this.initTimer();
     }
 
-    public initTimer(): void {
+    private initTimer(): void {
         const untilTimeMs = Date.now() + this.timeMins * MS_IN_MIN;
 
         this.leftTimeMs = untilTimeMs - Date.now();
@@ -59,7 +59,7 @@ export class TimerComponent implements OnInit {
         return indicationOpacity;
     }
 
-    get countDownString(): string {
+    public get countDownString(): string {
         let cds = '';
         const hours = Math.floor(this.leftTimeMs / MS_IN_HOUR);
         const paddingSymbol = 0;

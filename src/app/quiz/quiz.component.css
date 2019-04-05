@@ -2,3 +2,12 @@
     display: block;
     margin: 10px 20px;
 }
+
+.controls > button:not(:first-child) {
+    margin-left: 10px;
+}
+
+.complete-btn {
+    display: block;
+    margin: auto;
+}
