@@ -41,9 +41,4 @@ export class TestComponent implements OnInit {
     public toFormControl(point: string): FormControl {
         return <FormControl>this.addTestFormGroup.get(point);
     }
-
-    public toArray(){
-        return [].slice.call(this.addTestFormGroup.get('answers'));
-    }
-
 }
