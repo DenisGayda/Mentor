@@ -10,7 +10,7 @@ import { ListComponent } from './list.component';
         ListComponent,
     ],
     exports: [
-        ListComponent
-    ]
+        ListComponent,
+    ],
 })
 export class ListModule { }
