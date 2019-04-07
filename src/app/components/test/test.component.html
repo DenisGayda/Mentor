@@ -17,7 +17,7 @@
         </mat-select>
     </mat-form-field>
     <mat-form-field class="question">
-        <textarea [formControl]="addTestFormGroup.get('question')"
+        <textarea [formControl]="toFormControl('question')"
                   placeholder="Here input your question"
                   class="question"
                   matInput
@@ -33,7 +33,7 @@
                 <input [formControl]="control"
                        placeholder="Possible answer"
                        matInput type="text">
-                <mat-icon *ngIf="addTestFormGroup.controls.answers.controls.length > 3"
+                <mat-icon *ngIf="addTestFormGroup.get('answers').controls.length > 3"
                           (click)="removeAnswer(i)"
                           class="mat-18 delete">delete</mat-icon>
             </mat-form-field>

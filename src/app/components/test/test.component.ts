@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-test',
@@ -36,6 +36,14 @@ export class TestComponent implements OnInit {
 
     public checkCorrect($event): void {
         this.addTestFormGroup.get('correctAnswer').patchValue($event.value);
+    }
+
+    public toFormControl(point: string): FormControl {
+        return <FormControl>this.addTestFormGroup.get(point);
+    }
+
+    public toArray(){
+        return [].slice.call(this.addTestFormGroup.get('answers'));
     }
 
 }
