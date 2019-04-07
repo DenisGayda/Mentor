@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-test',
@@ -41,4 +41,9 @@ export class TestComponent implements OnInit {
     public toFormControl(point: string): FormControl {
         return <FormControl>this.addTestFormGroup.get(point);
     }
+
+    public toArray(): AbstractControl[] {
+        return  (<FormArray>this.addTestFormGroup.get('answers')).controls;
+    }
+
 }
