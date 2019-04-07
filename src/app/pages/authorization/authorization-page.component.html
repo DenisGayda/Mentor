@@ -17,9 +17,8 @@
         </mat-form-field>
         <button mat-raised-button
                 color="primary"
+                [disabled]="!authFormGroup.valid"
                 (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
-     <button mat-button
-             (click)="changeMode('SignUp')">SignUp</button>
      <p *ngIf="error$">{{error$ | async}}</p>
  </form>
 
