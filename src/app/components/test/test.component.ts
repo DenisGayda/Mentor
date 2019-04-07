@@ -8,7 +8,6 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class TestComponent implements OnInit {
     public addTestFormGroup: FormGroup;
-    constructor() {}
 
     ngOnInit(): void {
         this.addTestFormGroup = new FormGroup({
@@ -18,16 +17,25 @@ export class TestComponent implements OnInit {
             answers: new FormArray([
                 new FormControl(''),
                 new FormControl(''),
-                new FormControl('')
-            ])
-        })
+                new FormControl(''),
+            ]),
+        });
     }
 
     public addAnswer(): void {
-        (<FormArray>this.addTestFormGroup.controls['answers']).push(new FormControl(''))
+        (<FormArray>this.addTestFormGroup.controls.answers).push(new FormControl(''));
     }
+
     public removeAnswer(index: number): void {
-        (<FormArray>this.addTestFormGroup.controls['answers']).removeAt(index)
+        (<FormArray>this.addTestFormGroup.controls.answers).removeAt(index);
+    }
+
+    public confirmTest(): void {
+        localStorage.test = JSON.stringify(this.addTestFormGroup.value);
+    }
+
+    public checkCorrect($event): void {
+        this.addTestFormGroup.get('correctAnswer').patchValue($event.value);
     }
 
 }

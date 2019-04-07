@@ -4,8 +4,8 @@
     border-radius: 4px;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
 }
-form{
-    padding: 0 15px 15px 15px;
+.main{
+    padding: 0 35px 15px 35px;
 }
 .select{
     width: 100%;
@@ -31,7 +31,6 @@ form{
 .footer{
     display: flex;
     justify-content: center;
-
 }
 .add-btn{
 }
@@ -43,4 +42,8 @@ form{
 }
 .correct-field{
     display: block;
+}
+.correct{
+    position: absolute;
+    left: -5%;
 }

@@ -8,11 +8,11 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatSelectModule
+    MatRadioModule,
+    MatSelectModule,
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListModule } from '../list/list.module';
-
 
 @NgModule({
     declarations: [
@@ -30,6 +30,10 @@ import { ListModule } from '../list/list.module';
         MatInputModule,
         FormsModule,
         ListModule,
+        MatRadioModule,
+    ],
+    exports: [
+        TestComponent,
     ],
 })
 export class TestModule {

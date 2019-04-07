@@ -1,46 +1,56 @@
-<form [formGroup]="addTestFormGroup">
+<div class="main">
     <mat-form-field class="select">
         <mat-label>Test Theme</mat-label>
-        <mat-select formControlName="theme">
-            <mat-option>
+        <mat-select [formControl]="addTestFormGroup.get('theme')">
+            <mat-option value="html">
                 HTML
             </mat-option>
-            <mat-option>
+            <mat-option value="css">
                 CSS
             </mat-option>
-            <mat-option>
+            <mat-option value="js">
                 JS
             </mat-option>
-            <mat-option>
+            <mat-option value="Angular">
                 Angular
             </mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field class="question">
-        <textarea formControlName="question" placeholder="Here input your question" class="question" matInput type="text"></textarea>
+        <textarea [formControl]="addTestFormGroup.get('question')"
+                  placeholder="Here input your question"
+                  class="question"
+                  matInput
+                  type="text"></textarea>
     </mat-form-field>
-    <div formArrayName="answers" class="answers">
-        <div *ngFor="let a of addTestFormGroup.controls.answers.controls, let i = index"
+    <div class="answers">
+        <div *ngFor="let control of addTestFormGroup.controls.answers.controls, let i = index"
              class="answers">
             <mat-form-field>
-                <input formControlName="{{i}}" placeholder="Possible answer" matInput type="text">
+                <mat-radio-button class="correct"
+                                  (change)="checkCorrect($event)"
+                                  [value]="control.value"></mat-radio-button>
+                <input [formControl]="control" placeholder="Possible answer" matInput type="text">
                 <mat-icon *ngIf="addTestFormGroup.controls.answers.controls.length > 3"
-                    (click)="removeAnswer(i)"
+                          (click)="removeAnswer(i)"
                           class="mat-18 delete">delete</mat-icon>
             </mat-form-field>
         </div>
     </div>
-    <button (click)="addAnswer()" mat-raised-button color="primary" class="add-btn">
+    <button (click)="addAnswer()"
+            mat-raised-button
+            color="primary"
+            class="add-btn">
         <mat-icon class="mat-18">add</mat-icon>
     </button>
     <div>
-        <mat-form-field class="correct-field">
-            <input formControlName="correctAnswer" matInput placeholder="Correct answer" type="text">
-        </mat-form-field>
         <div class="footer">
-            <button mat-raised-button color="accent">
+            <button (click)="confirmTest()"
+                    [disabled]="!addTestFormGroup.valid"
+                    mat-raised-button
+                    color="accent">
                 <mat-icon class="mat-18">check</mat-icon>
             </button>
         </div>
     </div>
-</form>
+</div>
