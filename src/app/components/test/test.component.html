@@ -30,7 +30,9 @@
                 <mat-radio-button class="correct"
                                   (change)="checkCorrect($event)"
                                   [value]="control.value"></mat-radio-button>
-                <input [formControl]="control" placeholder="Possible answer" matInput type="text">
+                <input [formControl]="control"
+                       placeholder="Possible answer"
+                       matInput type="text">
                 <mat-icon *ngIf="addTestFormGroup.controls.answers.controls.length > 3"
                           (click)="removeAnswer(i)"
                           class="mat-18 delete">delete</mat-icon>
