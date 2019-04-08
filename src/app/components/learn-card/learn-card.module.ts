@@ -15,6 +15,6 @@ import { MatButtonModule } from '@angular/material';
     ],
     exports: [
         LearnCardComponent,
-    ]
+    ],
 })
 export class LearnCardModule { }

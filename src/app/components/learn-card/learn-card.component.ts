@@ -1,27 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { TdTextEditorComponent } from '@covalent/text-editor';
 
 @Component({
     selector: 'app-learn-card',
     templateUrl: './learn-card.component.html',
-    styleUrls: ['./learn-card.component.css'],
+    styleUrls: ['./learn-card.component.sass'],
 })
-export class LearnCardComponent implements OnInit {
-    public options = {
+export class LearnCardComponent implements AfterViewInit {
+    @Input() readonly: boolean;
+    @Input() initText: string;
+    public optionsMentor = {
         lineWrapping: true,
         autofocus: true,
-        autosave: {
-            enabled: true,
-            uniqueId: "MyUniqueID",
-            delay: 1000,
-        },
     };
-    public data;
-    constructor() { }
+    public optionsTrainee = {
+        lineWrapping: true,
+        autofocus: true,
+        status: false,
+        toolbar: false,
+    };
+    @ViewChild('editorComponent')
+    private editor: TdTextEditorComponent;
 
-    ngOnInit() {
-  }
-  saveData(): void{
-        localStorage.data = JSON.stringify(this.data)
-  }
+    ngAfterViewInit(): void {
+        if (this.readonly) {
+            this.editor.togglePreview();
+        }
+    }
+
+    saveData(): void {
+        localStorage.data = JSON.stringify(this.editor.value);
+    }
 
 }
