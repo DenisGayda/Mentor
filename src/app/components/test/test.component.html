@@ -8,40 +8,46 @@
         </mat-select>
     </mat-form-field>
     <mat-form-field class="question">
-        <textarea [formControl]="toFormControl('question')"
-                  placeholder="Here input your question"
-                  class="question"
-                  matInput
-                  type="text"></textarea>
+        <textarea
+            [formControl]="toFormControl('question')"
+            placeholder="Here input your question"
+            class="question"
+            type="text"
+            matInput></textarea>
     </mat-form-field>
     <div class="answers">
         <div *ngFor="let control of toArray(), let i = index"
              class="answers">
             <mat-form-field>
-                <mat-radio-button class="correct"
-                                  (change)="checkCorrect($event)"
-                                  [value]="control.value"></mat-radio-button>
-                <input [formControl]="control"
-                       placeholder="Possible answer"
-                       matInput type="text">
-                <mat-icon *ngIf="toArray().length > 3"
-                          (click)="removeAnswer(i)"
-                          class="mat-18 delete">delete</mat-icon>
+                <mat-radio-button
+                    [value]="control.value"
+                    (change)="checkCorrect($event)"
+                    class="correct"></mat-radio-button>
+                <input
+                    [formControl]="control"
+                    placeholder="Possible answer"
+                    matInput type="text">
+                <mat-icon
+                    *ngIf="toArray().length > 3"
+                    (click)="removeAnswer(i)"
+                    class="mat-18 delete">delete</mat-icon>
             </mat-form-field>
         </div>
     </div>
-    <button (click)="addAnswer()"
-            mat-raised-button
-            color="primary"
-            class="add-btn">
+    <button
+        (click)="addAnswer()"
+        color="primary"
+        class="add-btn"
+        mat-raised-button>
         <mat-icon class="mat-18">add</mat-icon>
     </button>
     <div>
         <div class="footer">
-            <button (click)="confirmTest()"
-                    [disabled]="!addTestFormGroup.valid"
-                    mat-raised-button
-                    color="accent">
+            <button
+                [disabled]="!addTestFormGroup.valid"
+                (click)="confirmTest()"
+                mat-raised-button
+                color="accent">
                 <mat-icon class="mat-18">check</mat-icon>
             </button>
         </div>
