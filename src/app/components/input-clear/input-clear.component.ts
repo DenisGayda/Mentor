@@ -8,6 +8,6 @@ import { FormControl } from '@angular/forms';
 })
 export class InputClearComponent {
     @Input() customPlaceholder: string;
-    @Input() customFormcontrol = new FormControl();
+    @Input() customFormControl: FormControl;
     @Input() customType: string;
 }

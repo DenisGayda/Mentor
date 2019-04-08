@@ -12,7 +12,6 @@ describe('InputClearComponent', () => {
         })
     .compileComponents();
     }));
-
     beforeEach(() => {
         fixture = TestBed.createComponent(InputClearComponent);
         component = fixture.componentInstance;
