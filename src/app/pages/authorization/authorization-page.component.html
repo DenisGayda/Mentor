@@ -17,10 +17,17 @@
                     type="password">
             </label>
         </mat-form-field>
+<<<<<<< HEAD
         <button
             mat-raised-button
             color="primary"
             (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
+=======
+        <button mat-raised-button
+                color="primary"
+                [disabled]="!authFormGroup.valid"
+                (click)="signIn(dataFromForm.email, dataFromForm.password)">Sign In</button>
+>>>>>>> 1a262d580bacd52d9abd320e5ddf28ba374be0e8
      <p *ngIf="error$">{{error$ | async}}</p>
  </form>
 
