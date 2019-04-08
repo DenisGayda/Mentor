@@ -3,11 +3,9 @@
 <p>{{ tasksPagination }}</p>
 
 <app-quiz-task
-    *ngIf="tasks"
     [task]="tasks[currentTaskIndex]"
     [answerValue]="currentAnswer"
     (answer)="addAnswer($event)">
-
 </app-quiz-task>
 
 <div class="controls">

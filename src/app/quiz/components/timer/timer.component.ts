@@ -1,11 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 const MS_IN_SEC = 1000;
 const SECS_IN_MIN = 60;
 const MINS_IN_HOUR = 60;
-const SECS_IN_HOUR = MINS_IN_HOUR * SECS_IN_MIN;
-const MS_IN_HOUR = SECS_IN_HOUR * MS_IN_SEC;
-const MS_IN_MIN = SECS_IN_MIN * MS_IN_SEC;
 const TIMER_UPDATE_FREQUENCY_MS = 1000;
 
 @Component({
@@ -16,11 +13,14 @@ const TIMER_UPDATE_FREQUENCY_MS = 1000;
 })
 export class TimerComponent implements OnInit {
     @Output() ended = new EventEmitter<void>();
-    @Input('time') timeMins: number;
-    @Input('title') timerTitle = 'Time left: ';
+    @Input() time: number;
+    @Input() title = 'Time left: ';
 
     public indicationColor = 'rgba(255, 0, 0, 0)';
-    private leftTimeMs;
+    private indicationOpacity = 0;
+    private intervalId: number;
+    private leftTimeMs: number;
+    private untilTimeMs: number;
 
     constructor(private detectorRef: ChangeDetectorRef) { }
 
@@ -29,61 +29,66 @@ export class TimerComponent implements OnInit {
     }
 
     private initTimer(): void {
-        const untilTimeMs = Date.now() + this.timeMins * MS_IN_MIN;
-
-        this.leftTimeMs = untilTimeMs - Date.now();
-        let indicationOpacity = 0;
-
-        const interId = setInterval(() => {
-            this.leftTimeMs = untilTimeMs - Date.now();
-            indicationOpacity = this.manageEndTimeIndicationOpacity(indicationOpacity);
-            if (this.leftTimeMs <= 0) {
-                this.leftTimeMs = 0;
-                clearInterval(interId);
-                this.ended.emit();
-            }
-            this.detectorRef.detectChanges();
-        }, TIMER_UPDATE_FREQUENCY_MS);
-
+        this.untilTimeMs = Date.now() + this.time * SECS_IN_MIN * MS_IN_SEC;
+        this.leftTimeMs = this.untilTimeMs - Date.now();
+        this.intervalId = setInterval(this.tickTimer.bind(this), TIMER_UPDATE_FREQUENCY_MS);
     }
 
-    private manageEndTimeIndicationOpacity(indicationOpacity: number): number {
+    private tickTimer(): void {
+        this.leftTimeMs = this.untilTimeMs - Date.now();
+        this.manageEndTimeIndicationOpacity();
+
+        this.detectorRef.detectChanges();
+
+        if (this.leftTimeMs <= 0) {
+            this.stopTimer();
+        }
+    }
+
+    private stopTimer(): void {
+        this.leftTimeMs = 0;
+        clearInterval(this.intervalId);
+        this.ended.emit();
+    }
+
+    private manageEndTimeIndicationOpacity(): void {
         const increaseOpacityStep = 0.1;
         const minSecsToIncreaseOpacity = 10;
 
         if (Math.round(this.leftTimeMs / MS_IN_SEC) < minSecsToIncreaseOpacity) {
-            indicationOpacity += increaseOpacityStep;
-            this.indicationColor = `rgba(255, 0, 0, ${indicationOpacity})`;
+            this.indicationOpacity += increaseOpacityStep;
+            this.indicationColor = `rgba(255, 0, 0, ${this.indicationOpacity})`;
         }
-
-        return indicationOpacity;
     }
 
     public get countDownString(): string {
         let cds = '';
-        const hours = Math.floor(this.leftTimeMs / MS_IN_HOUR);
-        const paddingSymbol = 0;
+        let minsAndSecsLength = 1;
+        const paddingSymbol = '0';
 
-        if (hours) {
-            cds += `${hours}:`;
+        if (this.hours) {
+            cds += `${this.hours}:`;
         }
 
-        const minutes = Math.floor((this.leftTimeMs + 1) / MS_IN_MIN) - hours * MINS_IN_HOUR;
-
-        if (minutes || hours) {
-            if (String(minutes).length === 1) {
-                cds += paddingSymbol;
-            }
-            cds += `${minutes}:`;
+        if (this.minutes || this.hours) {
+            minsAndSecsLength = 2;
+            cds += `${String(this.minutes).padStart(minsAndSecsLength, paddingSymbol)}:`;
         }
 
-        const seconds = Math.round(this.leftTimeMs / MS_IN_SEC) - hours * SECS_IN_HOUR - minutes * SECS_IN_MIN;
-
-        if (String(seconds).length === 1 && (minutes !== 0 || hours !== 0)) {
-            cds += paddingSymbol;
-        }
-        cds += seconds;
+        cds += `${String(this.seconds).padStart(minsAndSecsLength, paddingSymbol)}`;
 
         return cds;
+    }
+
+    private get hours(): number {
+        return Math.floor(this.leftTimeMs / (MINS_IN_HOUR * SECS_IN_MIN * MS_IN_SEC));
+    }
+
+    private get minutes(): number {
+        return Math.floor((this.leftTimeMs + 1) / (SECS_IN_MIN * MS_IN_SEC)) - this.hours * MINS_IN_HOUR;
+    }
+
+    private get seconds(): number {
+        return Math.round(this.leftTimeMs / MS_IN_SEC) - this.hours * MINS_IN_HOUR * SECS_IN_MIN - this.minutes * SECS_IN_MIN;
     }
 }
