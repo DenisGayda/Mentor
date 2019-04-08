@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LearnCardComponent } from './learn-card.component';
 import { CovalentTextEditorModule } from '@covalent/text-editor';
 import { MatButtonModule } from '@angular/material';
