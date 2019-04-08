@@ -4,7 +4,7 @@ import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '
 @Component({
     selector: 'app-test',
     templateUrl: './test.component.html',
-    styleUrls: ['./test.component.css'],
+    styleUrls: ['./test.component.sass'],
 })
 export class TestComponent implements OnInit {
     public addTestFormGroup: FormGroup;
