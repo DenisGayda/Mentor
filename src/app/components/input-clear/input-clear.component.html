@@ -1,7 +1,9 @@
 <ng-container *ngIf="customFormControl">
 <mat-form-field class="example-form-field">
         <label>
-            <input #input matInput [type]="customType" [placeholder]="customPlaceholder" [formControl]="customFormControl">
+            <input #input matInput [type]="customType"
+                   [placeholder]="customPlaceholder"
+                   [formControl]="customFormControl">
         </label>
         <button mat-button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value = ''">
             <mat-icon>close</mat-icon>

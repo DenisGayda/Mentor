@@ -1,9 +1,13 @@
  <form [formGroup]="authFormGroup">
             <label>
-                <app-input-clear customType="text" customPlaceholder="email" [customFormControl]="authFormGroup.controls['email']"></app-input-clear>
+                <app-input-clear customType="text"
+                                 customPlaceholder="email"
+                                 [customFormControl]="authFormGroup.controls['email']"></app-input-clear>
             </label>
             <label>
-                <app-input-clear customType="password" customPlaceholder="password" [customFormControl]="authFormGroup.controls['password']"></app-input-clear>
+                <app-input-clear customType="password"
+                                 customPlaceholder="password"
+                                 [customFormControl]="authFormGroup.controls['password']"></app-input-clear>
             </label>
         <button mat-raised-button
                 color="primary"

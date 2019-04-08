@@ -13,9 +13,7 @@ import { MatInputModule, MatIconModule, MatButtonModule } from '@angular/materia
         MatButtonModule,
         ReactiveFormsModule,
     ],
-    declarations: [InputClearComponent],
-    exports: [
-        InputClearComponent,
-    ],
+    declarations: [InputClearComponent ],
+    exports: [ InputClearComponent ],
 })
 export class InputClearModule {}
