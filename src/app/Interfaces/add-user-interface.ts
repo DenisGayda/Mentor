@@ -1,7 +1,7 @@
 export interface AddUserInterface {
-    name?: string;
-    surname?: string;
-    email?: string;
+    name: string;
+    surname: string;
+    email: string;
     password: string;
-    role?: string;
+    role: string;
 }

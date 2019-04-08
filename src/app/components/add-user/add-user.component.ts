@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
-// import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AddUserInterface} from '../../Interfaces/add-user-interface';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AddUserInterface } from '../../Interfaces/add-user-interface';
 
 @Component({
     selector: 'app-add-user',
@@ -12,20 +12,25 @@ export class AddUserComponent implements OnInit {
     @Input() ROLE: string;
     @Output() onAdd = new EventEmitter();
     public user: AddUserInterface;
-    // form: FormGroup = new FormGroup({
-    //     firstName: new FormControl('', Validators.required),
-    // });
+    public form: FormGroup;
 
-    addUser(): void {
-        // this.ROLE = this.user.role;
-        this.user.password = 'password';
-        // this.user.name = this.form.value.firstName;
-        console.log(this.user);
-        // this.onAdd.emit(this.user);
+    public addUser(): void {
+        this.user = {
+            name: this.form.value.firstName,
+            surname: this.form.value.lastName,
+            email: this.form.value.email,
+            password: 'password',
+            role: this.ROLE,
+        };
+        this.onAdd.emit(this.user);
     }
 
-    ngOnInit() {
-
+    ngOnInit(): void {
+        this.form = new FormGroup({
+            firstName: new FormControl('', Validators.required),
+            lastName: new FormControl('', Validators.required),
+            email: new FormControl('', Validators.pattern('[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}')),
+        });
     }
 
 }
