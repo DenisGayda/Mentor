@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AddUserInterface } from '../../Interfaces/add-user-interface';
 
 @Component({
     selector: 'app-add-user',
@@ -9,20 +8,20 @@ import { AddUserInterface } from '../../Interfaces/add-user-interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddUserComponent implements OnInit {
-    @Input() ROLE: string;
+    @Input() role: string;
     @Output() onAdd = new EventEmitter();
-    public user: AddUserInterface;
     public form: FormGroup;
 
     public addUser(): void {
-        this.user = {
+        const user = {
             name: this.form.value.firstName,
             surname: this.form.value.lastName,
             email: this.form.value.email,
             password: 'password',
-            role: this.ROLE,
+            role: this.role,
         };
-        this.onAdd.emit(this.user);
+
+        this.onAdd.emit(user);
     }
 
     ngOnInit(): void {
