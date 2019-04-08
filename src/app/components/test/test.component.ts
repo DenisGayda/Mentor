@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-test',
     templateUrl: './test.component.html',
     styleUrls: ['./test.component.sass'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestComponent implements OnInit {
     public addTestFormGroup: FormGroup;
+    public testThemes: string[] = ['html', 'css', 'js', 'angular'];
 
     ngOnInit(): void {
         this.addTestFormGroup = new FormGroup({
