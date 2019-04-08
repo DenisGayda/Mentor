@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./input-clear.component.css'],
 })
 export class InputClearComponent {
-    @Input() holder: string;
-    @Input() control = new FormControl();
-    @Input() tp: string;
+    @Input() customPlaceholder: string;
+    @Input() customFormcontrol = new FormControl();
+    @Input() customType: string;
 }
