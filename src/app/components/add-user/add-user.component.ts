@@ -13,11 +13,7 @@ export class AddUserComponent implements OnInit {
     @Output() onAdd = new EventEmitter();
     public user: AddUserInterface;
     public form: FormGroup;
-    form = new FormGroup({
-        firstName: new FormControl('', Validators.required),
-        lastName: new FormControl('', Validators.required),
-        email: new FormControl('', Validators.pattern('[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}')),
-    });
+
     public addUser(): void {
         this.user = {
             name: this.form.value.firstName,
@@ -30,7 +26,11 @@ export class AddUserComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.form = new FormGroup({
+            firstName: new FormControl('', [Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.email, Validators.required]),
+        });
     }
 
 }

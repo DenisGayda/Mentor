@@ -8,5 +8,5 @@
     <mat-form-field class="example-full-width">
         <input type="email" matInput placeholder="email" name = "email" formControlName="email">
     </mat-form-field>
-    <button (click)="addUser()" mat-raised-button>Создать</button>
+    <button [disabled]="form.invalid" (click)="addUser()" mat-raised-button>Создать</button>
 </form>

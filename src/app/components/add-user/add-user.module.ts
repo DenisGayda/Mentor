@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddUserComponent } from './add-user.component';
-import { MatButtonModule } from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -12,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatInputModule,
         FormsModule,
         ReactiveFormsModule,
+        MatFormFieldModule,
     ],
     declarations: [AddUserComponent],
     exports: [
