@@ -13,15 +13,19 @@ export class AddUserComponent implements OnInit {
     public form: FormGroup;
 
     public addUser(): void {
-        const user = {
-            name: this.form.value.firstName,
-            surname: this.form.value.lastName,
-            email: this.form.value.email,
-            password: 'password',
-            role: this.role,
-        };
-
-        this.onAdd.emit(user);
+        // const user = {
+        //     name: this.form.value.firstName,
+        //     surname: this.form.value.lastName,
+        //     email: this.form.value.email,
+        //     password: 'password',
+        //     role: this.role,
+        // };
+        // const { firstName, lastName, email, } = obj;
+        const user = this.form.value;
+        user.password = 'password';
+        user.role = this.role;
+        console.log(user);
+        // this.onAdd.emit(user);
     }
 
     ngOnInit(): void {
@@ -31,5 +35,4 @@ export class AddUserComponent implements OnInit {
             email: new FormControl('', [Validators.email, Validators.required]),
         });
     }
-
 }
