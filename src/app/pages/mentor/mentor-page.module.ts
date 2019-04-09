@@ -4,7 +4,10 @@ import { MentorPageRouterModule } from './mentor-page-router.module';
 import { LearnCardModule } from '../../components/learn-card/learn-card.module';
 
 @NgModule({
-    imports: [ MentorPageRouterModule, LearnCardModule ],
+    imports: [
+        MentorPageRouterModule,
+        LearnCardModule,
+    ],
     declarations: [ MentorPageComponent ],
 })
 export class MentorPageModule {}
