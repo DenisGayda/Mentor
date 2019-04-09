@@ -11,7 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
     selector: 'app-add-user',
     templateUrl: './add-user.component.html',
-    styleUrls: ['./add-user.component.css'],
+    styleUrls: ['./add-user.component.sass'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddUserComponent implements OnInit {
