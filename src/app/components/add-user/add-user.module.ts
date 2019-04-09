@@ -13,9 +13,7 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/mat
         ReactiveFormsModule,
         MatFormFieldModule,
     ],
-    declarations: [AddUserComponent],
-    exports: [
-        AddUserComponent,
-    ],
+    declarations: [ AddUserComponent ],
+    exports: [ AddUserComponent ],
 })
-export class AddUserModule { }
+export class AddUserModule {}

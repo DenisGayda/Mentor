@@ -1,12 +1,28 @@
 <form [formGroup]="form" class="form-wrap">
     <mat-form-field class="example-full-width">
-        <input placeholder="Name" type="text" matInput formControlName="firstName">
+        <input
+            placeholder="Name"
+            type="text"
+            formControlName="firstName"
+            matInput>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input type="text" matInput placeholder="surname" formControlName="lastName">
+        <input
+            type="text"
+            placeholder="surname"
+            formControlName="lastName"
+            matInput>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input type="email" matInput placeholder="email" name = "email" formControlName="email">
+        <input
+            type="email"
+            placeholder="email"
+            name = "email"
+            formControlName="email"
+            matInput>
     </mat-form-field>
-    <button [disabled]="form.invalid" (click)="addUser()" mat-raised-button>Создать</button>
+    <button
+        [disabled]="form.invalid"
+        (click)="addUser()"
+        mat-raised-button>Создать</button>
 </form>
