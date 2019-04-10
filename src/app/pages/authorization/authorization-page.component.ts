@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserFirestoreInterface } from '../../Interfaces/user-firestore-interface';
-import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
 import { AuthService } from '../../services/AuthService/auth.service';
-import { AuthInterface } from '../../Interfaces/auth-interface';
+import { AuthInterface } from '../../configs/Interfaces/auth-interface';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -14,16 +12,15 @@ import { Router } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthorizationPageComponent implements OnInit {
-    public mode = 'SignIn';
     public authFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
     public error$: Subject<string> = new Subject();
 
-    constructor(private fb: FormBuilder,
-                private authService: AuthService,
-                private cloudStoreService: CloudStoreService,
-                private router: Router,
-                ) {
+    constructor(
+        private fb: FormBuilder,
+        private authService: AuthService,
+        private router: Router,
+        ) {
     }
 
     ngOnInit(): void {
@@ -35,25 +32,13 @@ export class AuthorizationPageComponent implements OnInit {
     }
 
     public signIn(email: string, password: string): void {
-        this.authService.signIn(email, password)
-            .then(data => {
-                localStorage.user = JSON.stringify(data.user);
-
-                return this.cloudStoreService
-                    .getUserAdditionalInfo$(JSON.parse(localStorage.getItem('user')).uid)
-                    .subscribe((value: UserFirestoreInterface) => this.checkUserRole(value.role));
-            })
-            .catch(error => {
-                if (error.code === 'auth/user-not-found') {
-                    this.error$.next('User error');
-                } else if (error.code === 'auth/wrong-password') {
-                    this.error$.next('Wrong password');
-                }
-            });
-    }
-
-    public changeMode(mode): void {
-        this.mode = mode;
+        this.authService.signIn$(email, password).subscribe(res => {
+            if (res.role) {
+                this.checkUserRole(res.role);
+            } else {
+                this.error$.next('Error');
+            }
+        });
     }
 
     private checkUserRole(role: string): void {

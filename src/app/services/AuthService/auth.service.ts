@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { CloudStoreService } from '../CloudStoreService/cloud-store.service';
-import { UserFirestoreInterface } from '../../Interfaces/user-firestore-interface';
-
-import UserCredential = firebase.auth.UserCredential;
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
+import { ResponseSignInInterface } from '../../configs/Interfaces/response-sign-in-interface';
+// import { UserInterface } from '../../configs/Interfaces/user-interface';
 
 @Injectable()
 export class AuthService {
-    constructor(private afAuth: AngularFireAuth,
-                private cloudStoreService: CloudStoreService) { }
+    constructor(private http: HttpClient) { }
 
-    public signIn(email: string, password: string): Promise<UserCredential> {
-        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    public signIn$(email: string, password: string): Observable<ResponseSignInInterface> {
+        const auth = {
+            email,
+            password,
+        };
+
+        return this.http.post<ResponseSignInInterface>(`${environment.URL}/user/auth`, {auth});
     }
 
-    public signUp(email: string, password: string, infoObject): void {
-        this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-            .then(user => {
-                this.createUserAdditionalInfo(user.user.uid, infoObject);
-            });
-    }
+    // public setUser(user): void{
+    //     this.http.post(`${environment.URL}/user`, {user})
+    // }
+    //
+    // public getUsers(): Observable<UserInterface[]>{
+    //     return  this.http.get<UserInterface[]>((`${environment.URL}/user`))
+    // }
 
-    private createUserAdditionalInfo(uid: string, info: UserFirestoreInterface): void {
-        this.cloudStoreService.userCollection.doc(uid).set(info);
-    }
 }
