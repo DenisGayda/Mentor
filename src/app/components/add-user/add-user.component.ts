@@ -12,6 +12,14 @@ export class AddUserComponent implements OnInit {
     @Output() onAdd = new EventEmitter();
     public form: FormGroup;
 
+    ngOnInit(): void {
+        this.form = new FormGroup({
+            firstName: new FormControl('', [Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.email, Validators.required]),
+        });
+    }
+
     public addUser(): void {
         const user = {
             ...this.form.value,
@@ -20,13 +28,5 @@ export class AddUserComponent implements OnInit {
         };
 
         this.onAdd.emit(user);
-    }
-
-    ngOnInit(): void {
-        this.form = new FormGroup({
-            firstName: new FormControl('', [Validators.required]),
-            lastName: new FormControl('', [Validators.required]),
-            email: new FormControl('', [Validators.email, Validators.required]),
-        });
     }
 }
