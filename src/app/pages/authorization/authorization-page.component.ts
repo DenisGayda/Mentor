@@ -4,6 +4,7 @@ import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { UserRole } from '../../configs/enums/user-role';
 
 @Component({
     selector: 'app-authorization',
@@ -43,16 +44,16 @@ export class AuthorizationPageComponent implements OnInit {
 
     private checkUserRole(role: string): void {
         switch (role) {
-            case 'mentor':
+            case UserRole.MENTOR:
                 this.router.navigate(['/mentor']);
                 break;
-            case 'admin':
+            case UserRole.ADMIN:
                 this.router.navigate(['/admin']);
                 break;
-            case 'manager':
+            case UserRole.MANAGER:
                 this.router.navigate(['/manager']);
                 break;
-            case 'trainee':
+            case UserRole.TRAINEE:
                 this.router.navigate(['/trainee']);
                 break;
             default:
