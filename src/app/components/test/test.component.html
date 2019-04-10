@@ -1,0 +1,55 @@
+<div class="main">
+    <mat-form-field class="select">
+        <mat-label>Test Theme</mat-label>
+        <mat-select *ngFor="let theme of testThemes" [formControl]="toFormControl('theme')">
+            <mat-option value="{{theme}}">
+                {{theme.toUpperCase()}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="question">
+        <textarea
+            [formControl]="toFormControl('question')"
+            placeholder="Here input your question"
+            class="question"
+            type="text"
+            matInput></textarea>
+    </mat-form-field>
+    <div class="answers">
+        <div *ngFor="let control of toArray(), let i = index"
+             class="answers">
+            <mat-form-field>
+                <mat-radio-button
+                    [value]="control.value"
+                    (change)="checkCorrect($event)"
+                    class="correct"></mat-radio-button>
+                <input
+                    [formControl]="control"
+                    placeholder="Possible answer"
+                    matInput type="text">
+                <mat-icon
+                    *ngIf="toArray().length > 3"
+                    (click)="removeAnswer(i)"
+                    class="mat-18 delete">delete</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    <button
+        (click)="addAnswer()"
+        color="primary"
+        class="add-btn"
+        mat-raised-button>
+        <mat-icon class="mat-18">add</mat-icon>
+    </button>
+    <div>
+        <div class="footer">
+            <button
+                [disabled]="!addTestFormGroup.valid"
+                (click)="confirmTest()"
+                mat-raised-button
+                color="accent">
+                <mat-icon class="mat-18">check</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
