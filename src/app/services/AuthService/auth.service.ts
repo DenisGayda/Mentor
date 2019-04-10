@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { ResponseSignInInterface } from '../../configs/Interfaces/response-sign-in-interface';
-// import { UserInterface } from '../../configs/Interfaces/user-interface';
 
 @Injectable()
 export class AuthService {
@@ -17,13 +16,4 @@ export class AuthService {
 
         return this.http.post<ResponseSignInInterface>(`${environment.URL}/user/auth`, {auth});
     }
-
-    // public setUser(user): void{
-    //     this.http.post(`${environment.URL}/user`, {user})
-    // }
-    //
-    // public getUsers(): Observable<UserInterface[]>{
-    //     return  this.http.get<UserInterface[]>((`${environment.URL}/user`))
-    // }
-
 }
