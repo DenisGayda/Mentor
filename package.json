@@ -15,7 +15,6 @@
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
-    "@angular/fire": "^5.1.2",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
     "@angular/material": "~7.3.6",
@@ -24,8 +23,6 @@
     "@angular/router": "^6.1.0",
     "@covalent/text-editor": "^2.0.0",
     "core-js": "^2.5.4",
-    "firebase": "^5.9.2",
-    "ngx-markdown-editor": "^1.2.0",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
