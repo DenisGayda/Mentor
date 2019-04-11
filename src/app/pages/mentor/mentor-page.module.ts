@@ -14,4 +14,4 @@ import { CodeEditorModule } from '../../components/code-editor/code-editor.modul
     ],
     declarations: [ MentorPageComponent ],
 })
-export class MentorPageModule { }
+export class MentorPageModule {}
