@@ -12,4 +12,4 @@ import { TestModule } from '../../components/test/test.module';
     ],
     declarations: [ MentorPageComponent ],
 })
-export class MentorPageModule { }
+export class MentorPageModule {}

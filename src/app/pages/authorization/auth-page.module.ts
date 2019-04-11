@@ -6,6 +6,7 @@ import { MatInputModule , MatButtonModule, MatFormFieldModule } from '@angular/m
 import { AuthService } from '../../services/AuthService/auth.service';
 import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
 import { AuthPageRouterModule } from './auth-page-router.module';
+import { InputClearModule } from '../../components/input-clear/input-clear.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { AuthPageRouterModule } from './auth-page-router.module';
         MatButtonModule,
         MatFormFieldModule,
         AuthPageRouterModule,
+        InputClearModule,
     ],
     declarations: [ AuthorizationPageComponent ],
     providers: [
