@@ -1,9 +1,10 @@
 <div class="main">
     <mat-form-field class="select">
         <mat-label>Test Theme</mat-label>
-        <mat-select *ngFor="let theme of testThemes" [formControl]="toFormControl('theme')">
-            <mat-option value="{{theme}}">
+        <mat-select [formControl]="toFormControl('theme')">
+            <mat-option *ngFor="let theme of testThemes" value="{{theme}}">
                 {{theme.toUpperCase()}}
+                
             </mat-option>
         </mat-select>
     </mat-form-field>
