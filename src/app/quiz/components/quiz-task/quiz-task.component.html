@@ -1,0 +1,6 @@
+<h4 class="question">{{ task?.question }}</h4>
+<mat-radio-group [value]="answerValue" (change)="emitAnswer($event.value)" class="radio-group">
+    <mat-radio-button *ngFor="let option of task?.options" [value]="option" class="radio-button">
+        {{ option }}
+    </mat-radio-button>
+</mat-radio-group>

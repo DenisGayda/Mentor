@@ -1,0 +1,17 @@
+:host {
+     display: block;
+     margin: 10px 0 30px 0;
+}
+
+.question {
+    margin: 20px 0 5px 0;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-button {
+    margin: 10px 20px;
+}
