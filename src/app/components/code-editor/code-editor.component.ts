@@ -8,12 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CodeEditorComponent implements OnInit {
     @Input() theme;
     @Input() language;
-
-    editorOptions = {
+    public editorOptions = {
         theme: this.theme,
         language: this.language,
     };
-    code: string = ``;
+    public code: string = ``;
   constructor() { }
 
   ngOnInit(): void {
