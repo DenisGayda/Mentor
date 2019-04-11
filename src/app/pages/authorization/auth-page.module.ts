@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule , MatButtonModule, MatFormFieldModule } from '@angular/material';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { CloudStoreService } from '../../services/CloudStoreService/cloud-store.service';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthPageRouterModule } from './auth-page-router.module';
 import { InputClearModule } from '../../components/input-clear/input-clear.module';
 
@@ -17,7 +16,6 @@ import { InputClearModule } from '../../components/input-clear/input-clear.modul
         MatInputModule,
         MatButtonModule,
         MatFormFieldModule,
-        AngularFireAuthModule,
         AuthPageRouterModule,
         InputClearModule,
     ],
