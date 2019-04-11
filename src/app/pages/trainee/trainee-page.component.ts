@@ -6,4 +6,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     styleUrls: ['./trainee-page.component.sass'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TraineePageComponent {}
+export class TraineePageComponent {
+    public editorConfig = {
+        language: 'javascript',
+        theme: 'vs-dark',
+    };
+}

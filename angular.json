@@ -27,8 +27,8 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "../node_modules/ngx-monaco-editor/assets/monaco",
-                "output": "./assets/monaco/"
+                "input": "node_modules/ngx-monaco-editor/assets/monaco",
+                "output": "/assets/monaco"
               }
             ],
             "styles": [

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CodeEditorComponent } from './code-editor.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
     declarations: [ CodeEditorComponent ],
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
         CommonModule,
         MonacoEditorModule,
         FormsModule,
+        MatButtonModule,
     ],
     exports: [ CodeEditorComponent ],
 })
