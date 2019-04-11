@@ -8,6 +8,7 @@ import { AppRouterModule } from './app-router.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ReactiveFormsModule,
         FormsModule,
         BrowserAnimationsModule,
+        MonacoEditorModule.forRoot(),
     ],
     providers: [],
     bootstrap: [AppComponent],
