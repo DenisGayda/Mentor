@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanLoad, Route } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from './services/AuthService/auth.service';
 
-@Injectable({
-    providedIn: 'root',
-})
-export class AuthGuard implements CanActivate {
-    canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        return  !!localStorage.user;
+@Injectable()
+export class AuthGuard implements CanLoad {
+    constructor(private authService: AuthService) {}
+
+    canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
+        return true;
+        }
     }
-}
+

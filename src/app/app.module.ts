@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth-guard.guard';
+import { AuthService } from './services/AuthService/auth.service';
 
 @NgModule({
     declarations: [
@@ -20,8 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
         BrowserAnimationsModule,
         HttpClientModule,
     ],
-    providers: [],
-    bootstrap: [AppComponent],
+    providers: [ AuthService, AuthGuard ],
+    bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }
