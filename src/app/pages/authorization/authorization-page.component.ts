@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnDestroy,
+    OnInit,
+} from '@angular/core';
+import {
+    FormBuilder,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
 import { Subscription } from 'rxjs';
