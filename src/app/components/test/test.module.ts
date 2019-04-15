@@ -13,6 +13,7 @@ import {
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListModule } from '../list/list.module';
+import { TestService } from '../../services/TestService/test.service';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,9 @@ import { ListModule } from '../list/list.module';
     ],
     exports: [
         TestComponent,
+    ],
+    providers: [
+        TestService,
     ],
 })
 export class TestModule {
