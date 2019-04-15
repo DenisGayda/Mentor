@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
 import { ResponseSignInInterface } from '../../configs/Interfaces/response-sign-in-interface';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-    constructor(private http: HttpClient) { }
 
-    public signIn$(email: string, password: string): Observable<ResponseSignInInterface> {
-        const auth = {
-            email,
-            password,
-        };
+    constructor(private http: HttpClient, private router: Router) { }
 
-        return this.http.post<ResponseSignInInterface>(`${environment.URL}/user/auth`, {auth});
+    public signIn$(email: string, password: string): void {
+        this.http.post<ResponseSignInInterface>(`${environment.URL}/user/auth`, {auth: {email, password}})
+            .subscribe(role => this.router.navigate([`/${role.role}`]));
     }
+
 }
