@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './services/AuthService/auth.service';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
         MonacoEditorModule.forRoot(),
         HttpClientModule,
     ],
-    providers: [ AuthService ],
     bootstrap: [ AppComponent ],
 })
 export class AppModule {
