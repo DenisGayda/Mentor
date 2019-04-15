@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ResponseSignInInterface } from '../../configs/Interfaces/response-sign-in-interface';
-import { first, switchMap, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/internal/operators/tap';
 
 @Injectable()
 export class AuthService {
-    public _role$ = new ReplaySubject<string>();
+    private _role$ = new Subject<string>();
 
     constructor(private http: HttpClient) { }
 
@@ -21,10 +21,7 @@ export class AuthService {
             .pipe(tap(role => this._role$.next(role.role)));
     }
 
-    public role$(path: string): Observable<boolean> {
-        return this._role$.asObservable().pipe(
-            switchMap(role => of<boolean>(role === path)),
-            first()
-        );
+     public get role$(): Observable<string> {
+        return this._role$.asObservable();
     }
 }
