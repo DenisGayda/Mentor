@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/AuthService/auth.service';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { AuthService } from './services/AuthService/auth.service';
         ReactiveFormsModule,
         FormsModule,
         BrowserAnimationsModule,
+        MonacoEditorModule.forRoot(),
         HttpClientModule,
     ],
     providers: [ AuthService ],
