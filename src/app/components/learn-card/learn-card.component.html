@@ -1,10 +1,14 @@
 <td-text-editor
     #editorComponent
     [value]="initText || ''"
-    [options]="readonly ? optionsTrainee : optionsMentor"></td-text-editor>
+    [options]="readonly ? optionsTrainee : optionsMentor">
+</td-text-editor>
 <button
     *ngIf="!readonly"
     (click)="saveData()"
     class="saveBtn"
     color="accent"
-    mat-raised-button>Save</button>
+    mat-raised-button>
+
+    Save
+</button>
