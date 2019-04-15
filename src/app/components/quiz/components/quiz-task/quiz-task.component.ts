@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
-import { QuizTaskInterface } from '../../../Interfaces/quiz-task.interface';
+import { QuizTaskInterface } from '../../../../Interfaces/quiz-task.interface';
 
 @Component({
     selector: 'app-quiz-task',
