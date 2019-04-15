@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
-import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-authorization',
@@ -13,7 +12,6 @@ import { Subject } from 'rxjs';
 export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
-    public error$: Subject<string> = new Subject();
 
     constructor(
         private fb: FormBuilder,
