@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
 })
 export class AuthorizationPageComponent implements OnInit, OnDestroy {
     public authFormGroup: FormGroup;
-    private dataFromForm: AuthInterface;
+    public dataFromForm: AuthInterface;
 
     constructor(
         private fb: FormBuilder,
