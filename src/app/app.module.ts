@@ -22,8 +22,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
         MonacoEditorModule.forRoot(),
         HttpClientModule,
     ],
-    providers: [],
-    bootstrap: [AppComponent],
+    bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }

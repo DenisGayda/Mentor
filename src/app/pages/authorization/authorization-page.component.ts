@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
-import { UserRole } from '../../configs/enums/user-role';
 
 @Component({
     selector: 'app-authorization',
@@ -20,7 +18,6 @@ export class AuthorizationPageComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private authService: AuthService,
-        private router: Router,
         ) {
     }
 
@@ -33,32 +30,7 @@ export class AuthorizationPageComponent implements OnInit {
     }
 
     public signIn(email: string, password: string): void {
-        this.authService.signIn$(email, password).subscribe(res => {
-            if (res.role) {
-                this.checkUserRole(res.role);
-            } else {
-                this.error$.next('Error');
-            }
-        });
-    }
-
-    private checkUserRole(role: string): void {
-        switch (role) {
-            case UserRole.MENTOR:
-                this.router.navigate(['/mentor']);
-                break;
-            case UserRole.ADMIN:
-                this.router.navigate(['/admin']);
-                break;
-            case UserRole.MANAGER:
-                this.router.navigate(['/manager']);
-                break;
-            case UserRole.TRAINEE:
-                this.router.navigate(['/trainee']);
-                break;
-            default:
-                this.router.navigate(['/']);
-        }
+        this.authService.signIn$(email, password);
     }
 
     private signInFormInit(minLength: number, maxLength: number): void {
