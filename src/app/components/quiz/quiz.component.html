@@ -1,4 +1,7 @@
-<app-timer [time]="time" (ended)="completeQuiz()" title="Времени осталось: "></app-timer>
+<app-timer
+    [time]="time"
+    (ended)="completeQuiz()"
+    title="Времени осталось: "></app-timer>
 
 <p>{{ tasksPagination }}</p>
 
@@ -9,8 +12,16 @@
 </app-quiz-task>
 
 <div class="controls">
-    <button [disabled]="isTaskFirst" (click)="prev()" color="primary" mat-stroked-button>Prev</button>
-    <button [disabled]="isTaskLast" (click)="next()" color="primary" mat-stroked-button>Next</button>
+    <button
+        [disabled]="isTaskFirst"
+        (click)="prev()"
+        color="primary"
+        mat-stroked-button>Prev</button>
+    <button
+        [disabled]="isTaskLast"
+        (click)="next()"
+        color="primary"
+        mat-stroked-button>Next</button>
 </div>
 
 <button
