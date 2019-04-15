@@ -12,9 +12,7 @@ export class TestComponent implements OnInit {
     public addTestFormGroup: FormGroup;
     public testThemes: string[] = ['html', 'css', 'js', 'angular'];
 
-    constructor(
-        private testService: TestService,
-    ) {}
+    constructor(private testService: TestService) {}
 
     ngOnInit(): void {
         this.addTestFormGroup = new FormGroup({

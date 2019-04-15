@@ -33,12 +33,8 @@ import { TestService } from '../../services/TestService/test.service';
         ListModule,
         MatRadioModule,
     ],
-    exports: [
-        TestComponent,
-    ],
-    providers: [
-        TestService,
-    ],
+    exports: [ TestComponent ],
+    providers: [ TestService ],
 })
 export class TestModule {
 }
