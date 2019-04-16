@@ -11,11 +11,12 @@ import { AutoUnsubscribe } from '../../Decorators/AutoUnsubscribe';
     styleUrls: ['./authorization-page.component.sass'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-@AutoUnsubscribe(["signInFormSubscribe()"])
+@AutoUnsubscribe(['signInFormSubscribe()'])
 export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
     public error$: Subject<string> = new Subject();
+
     constructor(
         private fb: FormBuilder,
         private authService: AuthService,
@@ -34,6 +35,11 @@ export class AuthorizationPageComponent implements OnInit {
         this.authService.signIn$(email, password);
     }
 
+    public signInFormSubscribe(): Subscription {
+        return  this.authFormGroup.valueChanges
+            .subscribe(data => this.dataFromForm = data);
+    }
+
     private signInFormInit(minLength: number, maxLength: number): void {
         this.authFormGroup = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
@@ -41,10 +47,5 @@ export class AuthorizationPageComponent implements OnInit {
                 Validators.minLength(minLength),
                 Validators.maxLength(maxLength)]],
         });
-    }
-
-    public signInFormSubscribe(): Subscription {
-        return  this.authFormGroup.valueChanges
-            .subscribe(data => this.dataFromForm = data);
     }
 }
