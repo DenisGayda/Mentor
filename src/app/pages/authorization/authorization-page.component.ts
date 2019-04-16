@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { AutoUnsubscribe } from '../../Decorators/AutoUnsubscribe';
 
 @Component({
     selector: 'app-authorization',
@@ -10,11 +11,11 @@ import { Subject } from 'rxjs';
     styleUrls: ['./authorization-page.component.sass'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+@AutoUnsubscribe(["signInFormSubscribe()"])
 export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
     public error$: Subject<string> = new Subject();
-
     constructor(
         private fb: FormBuilder,
         private authService: AuthService,
@@ -42,8 +43,8 @@ export class AuthorizationPageComponent implements OnInit {
         });
     }
 
-    private signInFormSubscribe(): void {
-        this.authFormGroup.valueChanges
+    public signInFormSubscribe(): Subscription {
+        return  this.authFormGroup.valueChanges
             .subscribe(data => this.dataFromForm = data);
     }
 }
