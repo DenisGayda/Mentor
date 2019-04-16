@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TestService } from '../../services/TestService/test.service';
 
 @Component({
     selector: 'app-test',
@@ -10,6 +11,8 @@ import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '
 export class TestComponent implements OnInit {
     public addTestFormGroup: FormGroup;
     public testThemes: string[] = ['html', 'css', 'js', 'angular'];
+
+    constructor(private testService: TestService) {}
 
     ngOnInit(): void {
         this.addTestFormGroup = new FormGroup({
@@ -33,7 +36,7 @@ export class TestComponent implements OnInit {
     }
 
     public confirmTest(): void {
-        localStorage.test = JSON.stringify(this.addTestFormGroup.value);
+        this.testService.confirmTest(this.addTestFormGroup.value);
     }
 
     public checkCorrect($event): void {
