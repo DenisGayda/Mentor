@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { QuizTaskInterface } from '../../Interfaces/quiz-task.interface';
-import { QuizAnswersInterface } from '../../Interfaces/quiz-answers.interface';
+import { QuizTaskInterface } from '../../configs/Interfaces/quiz-task.interface';
+import { QuizAnswersInterface } from '../../configs/Interfaces/quiz-answers.interface';
+import { HttpQuizTaskInterface } from '../../configs/Interfaces/http-quiz-task-interface';
 
 @Component({
     selector: 'app-quiz',
@@ -9,7 +10,7 @@ import { QuizAnswersInterface } from '../../Interfaces/quiz-answers.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizComponent {
-    @Input() tasks: QuizTaskInterface[] = [];
+    @Input() tasks: HttpQuizTaskInterface[] = [];
     @Input() time: number; // minutes
 
     public currentTaskIndex = 0;

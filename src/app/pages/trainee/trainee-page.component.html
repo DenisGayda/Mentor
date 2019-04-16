@@ -1,2 +1,3 @@
-<app-learn-card [readonly]="true" initText="Trainee init text"></app-learn-card>
-<app-code-editor [language]="editorConfig.language" [theme]="editorConfig.theme"></app-code-editor>
+<!--<app-learn-card [readonly]="true" initText="Trainee init text"></app-learn-card>-->
+<!--<app-code-editor [language]="editorConfig.language" [theme]="editorConfig.theme"></app-code-editor>-->
+<app-quiz [tasks]="testService.getTests$() | async" time="60"></app-quiz>
