@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    OnDestroy,
     OnInit,
 } from '@angular/core';
 import {
@@ -12,6 +11,7 @@ import {
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
 import { Subscription } from 'rxjs';
+import { AutoUnsubscribe } from '../../Decorators/AutoUnsubscribe';
 
 @Component({
     selector: 'app-authorization',
@@ -19,7 +19,8 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./authorization-page.component.sass'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthorizationPageComponent implements OnInit, OnDestroy {
+@AutoUnsubscribe(['signInFormSubscribe()'])
+export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
 
@@ -37,12 +38,13 @@ export class AuthorizationPageComponent implements OnInit, OnDestroy {
         this.signInFormSubscribe();
     }
 
-    ngOnDestroy(): void {
-        this.signInFormSubscribe().unsubscribe();
-    }
-
     public signIn(email: string, password: string): void {
         this.authService.signIn$(email, password);
+    }
+
+    private signInFormSubscribe(): Subscription {
+        return this.authFormGroup.valueChanges
+            .subscribe(data => this.dataFromForm = data);
     }
 
     private signInFormInit(minLength: number, maxLength: number): void {
@@ -54,8 +56,4 @@ export class AuthorizationPageComponent implements OnInit, OnDestroy {
         });
     }
 
-    private signInFormSubscribe(): Subscription {
-        return this.authFormGroup.valueChanges
-            .subscribe(data => this.dataFromForm = data);
-    }
 }
