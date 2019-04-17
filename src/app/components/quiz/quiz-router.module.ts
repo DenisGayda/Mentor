@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MentorPageComponent } from './mentor-page.component';
+import { QuizComponent } from './quiz.component';
 
 const routes: Routes = [
-    { path: '', component: MentorPageComponent },
+    { path: '', component: QuizComponent },
 ];
 @NgModule({
     exports: [ RouterModule ],
     imports: [ RouterModule.forChild(routes) ],
 })
 
-export class MentorPageRouterModule {}
+export class QuizRouterModule {}
