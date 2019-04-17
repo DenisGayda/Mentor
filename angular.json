@@ -33,7 +33,8 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.sass"
+              "src/styles.sass",
+              "node_modules/angular-calendar/css/angular-calendar.css"
             ],
             "scripts": []
           },

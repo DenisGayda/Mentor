@@ -4,6 +4,7 @@ import { TraineePageComponent } from './trainee-page.component';
 
 const routes: Routes = [
     { path: '', component: TraineePageComponent },
+    { path: 'quiz/:theme', loadChildren: '../../components/quiz/quiz.module#QuizModule' }
 ];
 
 @NgModule({
