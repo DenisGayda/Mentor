@@ -31,6 +31,6 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {}
 
   public dayCLick(event){
-      this.router.navigate([`/quiz${event.day.events.testTheme}`])
+      this.router.navigate([`/quiz/${event.day.events.testTheme}`])
   }
 }
