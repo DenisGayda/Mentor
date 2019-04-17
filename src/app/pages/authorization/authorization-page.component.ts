@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnDestroy,
+    OnInit,
+} from '@angular/core';
+import {
+    FormBuilder,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
 import { Subject, Subscription } from 'rxjs';
@@ -15,11 +24,10 @@ import { AutoUnsubscribe } from '../../Decorators/AutoUnsubscribe';
 export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
-    public error$: Subject<string> = new Subject();
 
     constructor(
         private fb: FormBuilder,
-        private authService: AuthService,
+        public authService: AuthService,
         ) {
     }
 
@@ -31,7 +39,11 @@ export class AuthorizationPageComponent implements OnInit {
         this.signInFormSubscribe();
     }
 
-    public signIn(email: string, password: string): void {
+    ngOnDestroy(): void {
+        this.signInFormSubscribe().unsubscribe();
+    }
+
+    private signIn(email: string, password: string): void {
         this.authService.signIn$(email, password);
     }
 
@@ -48,4 +60,5 @@ export class AuthorizationPageComponent implements OnInit {
                 Validators.maxLength(maxLength)]],
         });
     }
+
 }

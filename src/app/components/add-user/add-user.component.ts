@@ -1,5 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnInit,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
+import {
+    FormGroup,
+    FormControl,
+    Validators,
+} from '@angular/forms';
 
 @Component({
     selector: 'app-add-user',
