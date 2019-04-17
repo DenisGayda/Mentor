@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    OnDestroy,
     OnInit,
 } from '@angular/core';
 import {
@@ -11,7 +10,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AutoUnsubscribe } from '../../Decorators/AutoUnsubscribe';
 
 @Component({
@@ -39,11 +38,7 @@ export class AuthorizationPageComponent implements OnInit {
         this.signInFormSubscribe();
     }
 
-    ngOnDestroy(): void {
-        this.signInFormSubscribe().unsubscribe();
-    }
-
-    private signIn(email: string, password: string): void {
+    public signIn(email: string, password: string): void {
         this.authService.signIn$(email, password);
     }
 
