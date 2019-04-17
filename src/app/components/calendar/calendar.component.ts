@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,11 +19,11 @@ export class CalendarComponent implements OnInit {
         },
     ];
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private ngZone: NgZone) { }
 
     ngOnInit(): void {}
 
     public dayCLick(event): void {
-        this.router.navigate([`trainee/quiz/${event.day.events[0].testTheme}`]);
+        this.ngZone.run(() => this.router.navigate([`trainee/quiz/${event.day.events[0].testTheme}`]))
     }
 }
