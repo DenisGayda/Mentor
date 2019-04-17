@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
     declarations: [
@@ -18,10 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
         ReactiveFormsModule,
         FormsModule,
         BrowserAnimationsModule,
+        MonacoEditorModule.forRoot(),
         HttpClientModule,
     ],
-    providers: [],
-    bootstrap: [AppComponent],
+    bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }

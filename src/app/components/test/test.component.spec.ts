@@ -12,6 +12,8 @@ import {
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {TestService} from '../../services/TestService/test.service';
+import {instance} from 'ts-mockito';
 
 describe('TestComponent', () => {
     let component: TestComponent;
@@ -32,6 +34,9 @@ describe('TestComponent', () => {
                 BrowserAnimationsModule,
             ],
             declarations: [ TestComponent ],
+            providers: [
+                {provide: TestService, useFactory: () => instance(TestService)},
+            ],
         })
     .compileComponents();
     }));

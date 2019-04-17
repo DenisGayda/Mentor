@@ -1,28 +1,24 @@
  <form [formGroup]="authFormGroup">
-        <mat-form-field>
             <label>
-                <input
-                    matInput
-                    formControlName="email"
-                    placeholder="email"
-                    type="email"> 
+                <app-input-clear
+                    customType="text"
+                    customPlaceholder="email"
+                    [customFormControl]="authFormGroup.controls['email']">
+                </app-input-clear>
             </label>
-        </mat-form-field>
-        <mat-form-field>
             <label>
-                <input
-                    matInput
-                    formControlName="password"
-                    placeholder="password"
-                    type="password">
+                <app-input-clear
+                    customType="password"
+                    customPlaceholder="password"
+                    [customFormControl]="authFormGroup.controls['password']">
+                </app-input-clear>
             </label>
-        </mat-form-field>
-        <button
-            [disabled]="!authFormGroup.valid"
-            (click)="signIn(dataFromForm.email, dataFromForm.password)"
-            color="primary"
-            mat-raised-button>Sign In</button>
-     <p *ngIf="error$">{{error$ | async}}</p>
+        <button mat-raised-button
+                color="primary"
+                [disabled]="!authFormGroup.valid"
+                (click)="signIn(dataFromForm.email, dataFromForm.password)">
+
+            Sign In
+        </button>
+     <p *ngIf="authService.error$ | async as err">{{err}}</p>
  </form>
-
-
