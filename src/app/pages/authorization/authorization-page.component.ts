@@ -36,7 +36,7 @@ export class AuthorizationPageComponent implements OnInit {
     }
 
     public signInFormSubscribe(): Subscription {
-        return  this.authFormGroup.valueChanges
+        return this.authFormGroup.valueChanges
             .subscribe(data => this.dataFromForm = data);
     }
 
