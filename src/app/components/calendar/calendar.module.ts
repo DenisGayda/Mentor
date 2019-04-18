@@ -10,7 +10,7 @@ import { CalendarRouterModule } from './calendar-router.module';
         CommonModule,
         CalendarModule.forRoot({
             provide: DateAdapter,
-            useFactory: adapterFactory
+            useFactory: adapterFactory,
         }),
         CalendarRouterModule,
     ],

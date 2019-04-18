@@ -5,6 +5,7 @@ import { QuizComponent } from './quiz.component';
 const routes: Routes = [
     { path: '', component: QuizComponent },
 ];
+
 @NgModule({
     exports: [ RouterModule ],
     imports: [ RouterModule.forChild(routes) ],

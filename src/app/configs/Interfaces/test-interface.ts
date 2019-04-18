@@ -1,4 +1,4 @@
-export interface Test {
+export interface TestInterface {
     theme: string;
     question: string;
     correctAnswer: string;

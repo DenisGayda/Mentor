@@ -13,9 +13,9 @@ const routes: Routes = [
             },
             {
                 path: 'quiz/:theme',
-                loadChildren: '../../components/quiz/quiz.module#QuizModule'
-            }
-            ]
+                loadChildren: '../../components/quiz/quiz.module#QuizModule',
+            },
+        ],
     },
 ];
 
