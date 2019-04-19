@@ -1,8 +1,17 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnInit,
+} from '@angular/core';
+import {
+    FormBuilder,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { AuthInterface } from '../../configs/Interfaces/auth-interface';
-import { Subject } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { AutoUnsubscribe } from '../../Decorators/AutoUnsubscribe';
 
 @Component({
     selector: 'app-authorization',
@@ -10,14 +19,14 @@ import { Subject } from 'rxjs';
     styleUrls: ['./authorization-page.component.sass'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+@AutoUnsubscribe(['signInFormSubscribe()'])
 export class AuthorizationPageComponent implements OnInit {
     public authFormGroup: FormGroup;
     public dataFromForm: AuthInterface;
-    public error$: Subject<string> = new Subject();
 
     constructor(
         private fb: FormBuilder,
-        private authService: AuthService,
+        public authService: AuthService,
         ) {
     }
 
@@ -33,6 +42,11 @@ export class AuthorizationPageComponent implements OnInit {
         this.authService.signIn$(email, password);
     }
 
+    private signInFormSubscribe(): Subscription {
+        return this.authFormGroup.valueChanges
+            .subscribe(data => this.dataFromForm = data);
+    }
+
     private signInFormInit(minLength: number, maxLength: number): void {
         this.authFormGroup = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
@@ -42,8 +56,4 @@ export class AuthorizationPageComponent implements OnInit {
         });
     }
 
-    private signInFormSubscribe(): void {
-        this.authFormGroup.valueChanges
-            .subscribe(data => this.dataFromForm = data);
-    }
 }
