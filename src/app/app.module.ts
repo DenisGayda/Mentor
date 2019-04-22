@@ -5,8 +5,9 @@ import { AppRouterModule } from './app-router.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { InterceptorService } from './services/InterceptorService/interceptor.service';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,13 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
         HttpClientModule,
     ],
     bootstrap: [ AppComponent ],
+    providers: [
+        { 
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorService,
+            multi: true
+        }
+        ]
 })
 export class AppModule {
 }
