@@ -11,14 +11,11 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
-    // tslint:disable-next-line:no-any
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return next.handle(req).pipe(
-          catchError(this.handleError),
+    // tslint:disable-next-line:rxjs-finnish no-any
+    public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return next.handle (req).pipe (
+            // tslint:disable-next-line:rxjs-throw-error
+            catchError((err: HttpErrorResponse) => throwError(err)),
       );
-    }
-
-    private handleError(error: HttpErrorResponse): Observable<never> {
-        return throwError(error);
     }
 }
