@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import {
+    HttpErrorResponse,
+    HttpEvent,
+    HttpHandler,
+    HttpInterceptor,
+    HttpRequest,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
-export class InterceptorService implements HttpInterceptor{
+export class InterceptorService implements HttpInterceptor {
+    // tslint:disable-next-line:no-any
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return next.handle(req).pipe(
+          catchError(this.handleError),
+      );
+    }
 
-  constructor() { }
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      return next.handle(req).pipe(
-          catchError(this.handleError)
-      )
-  }
-
-  private handleError(error: HttpErrorResponse): Observable<never>{
-      return throwError(error);
-  }
+    private handleError(error: HttpErrorResponse): Observable<never> {
+        return throwError(error);
+    }
 }

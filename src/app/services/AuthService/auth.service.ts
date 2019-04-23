@@ -12,7 +12,7 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) { }
 
     public signIn$(email: string, password: string): void {
-        this.http.post<ResponseSignInInterface>(`${environment.URL}/user/auh`, {auth: {email, password}})
+        this.http.post<ResponseSignInInterface>(`${environment.URL}/user/auth`, {auth: {email, password}})
             .subscribe(role => {
                 if (role.role) {
                     this.router.navigate([`/${role.role}`]);
