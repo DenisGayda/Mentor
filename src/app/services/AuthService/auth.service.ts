@@ -7,7 +7,11 @@ import { NotificationService } from '../NotificationService/notification.service
 
 @Injectable()
 export class AuthService {
-    constructor(private http: HttpClient, private router: Router, private notificationService: NotificationService) { }
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private notificationService: NotificationService,
+    ) {}
 
     public signIn$(email: string, password: string): void {
         this.http.post<ResponseSignInInterface>(`${environment.URL}/user/auth`, {auth: {email, password}})
@@ -15,7 +19,14 @@ export class AuthService {
                 if (role.role) {
                     this.router.navigate([`/${role.role}`]);
                 } else {
-                    this.notificationService.notificationPush({id: '1', type: 'error', message: 'Maybe you email or password wrong?'})
+                    this.notificationService.notificationPush({
+                        notification: {
+                            id: String(this.notificationService.getId()),
+                            type: 'error',
+                            message: 'Maybe you email or password wrong?',
+                        },
+                        status: false,
+                    });
                 }
             });
     }

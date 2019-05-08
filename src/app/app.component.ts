@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { NotificationService } from './services/NotificationService/notification.service';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.sass'],
 })
-export class AppComponent implements OnInit{
-    constructor(private notificationService: NotificationService){}
+export class AppComponent implements AfterViewInit {
+    @ViewChild('customNotification') notificationTemplate;
 
-    ngOnInit(): void {
+    constructor(private notificationService: NotificationService) {}
+
+    ngAfterViewInit(): void {
         this.notificationService._notifications$
-            .subscribe(data => this.notificationService.showSpecificNotification(data.id, data.type, data.message))
+            .subscribe(() => this.notificationService.showSpecificNotification(this.notificationTemplate));
     }
+
 }

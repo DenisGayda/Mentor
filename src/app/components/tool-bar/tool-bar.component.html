@@ -1,0 +1,47 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div class="tool-bar-row">
+            <p>Mentor</p>
+            <button mat-button>
+                <mat-icon
+                    *ngIf="(getFilteredNotifications$(true) | async).length || (getFilteredNotifications$(false) | async).length;
+                    else noNotifications"
+                    [matMenuTriggerFor]="appMenu"
+                    color="accent">
+
+                    notifications_active
+                </mat-icon>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu #appMenu="matMenu" (closed)="closeMenu()">
+    <div class="menu">
+        <ul class="notification-list">
+            <li
+                *ngFor="let notification of getFilteredNotifications$(false) | async"
+                [class]="notification.notification.type"
+            >
+
+                {{notification.notification.message}}
+            </li>
+        </ul>
+
+        <p class="notification-line">read notifications</p>
+
+        <ul class="notification-list">
+            <li
+                *ngFor="let notification of getFilteredNotifications$(true) | async"
+                [class]="notification.notification.type"
+            >
+
+                {{notification.notification.message}}
+            </li>
+        </ul>
+    </div>
+</mat-menu>
+
+<ng-template #noNotifications>
+   <mat-icon [matMenuTriggerFor]="appMenu">notifications</mat-icon>
+</ng-template>

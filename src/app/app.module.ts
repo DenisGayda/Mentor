@@ -7,9 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
-import { MatSnackBarModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { NotificationService } from './services/NotificationService/notification.service';
 import { NotifierModule } from 'angular-notifier';
+import { ToolBarModule } from './components/tool-bar/tool-bar.module';
 
 @NgModule({
     declarations: [
@@ -22,16 +23,18 @@ import { NotifierModule } from 'angular-notifier';
         ReactiveFormsModule,
         FormsModule,
         BrowserAnimationsModule,
-        MonacoEditorModule.forRoot(),
+        MonacoEditorModule.forRoot (),
         HttpClientModule,
-        MatSnackBarModule,
-        NotifierModule.withConfig({
+        ToolBarModule,
+        NotifierModule.withConfig ({
             position: {
                 horizontal: {
                     position: 'right',
-                }
-            }
+                },
+            },
         }),
+        MatIconModule,
+        MatButtonModule,
     ],
     bootstrap: [ AppComponent ],
     providers: [ NotificationService ],
