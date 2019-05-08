@@ -16,7 +16,10 @@ describe('AuthorizationComponent', () => {
         when(authService.signIn$(anything(), anything())).thenResolve(null);
 
         TestBed.configureTestingModule({
-            imports: [AuthPageModule, BrowserAnimationsModule],
+            imports: [
+                AuthPageModule,
+                BrowserAnimationsModule,
+            ],
             providers: [
                 {provide: AuthService, useFactory: () => instance(authService)},
                 {provide: Router, useFactory: () => instance(mock(Router))},
