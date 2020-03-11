@@ -4,6 +4,7 @@ import { QuizTaskModule } from '../quiz-task/quiz-task.module';
 import { TimerModule } from '../timer/timer.module';
 import { QuizComponent } from './quiz.component';
 import { MatButtonModule } from '@angular/material';
+import { QuizRouterModule } from './quiz-router.module';
 
 @NgModule({
     imports: [
@@ -11,12 +12,9 @@ import { MatButtonModule } from '@angular/material';
         QuizTaskModule,
         TimerModule,
         MatButtonModule,
+        QuizRouterModule,
     ],
-    declarations: [
-        QuizComponent,
-    ],
-    exports: [
-        QuizComponent,
-    ],
+    declarations: [ QuizComponent ],
+    exports: [ QuizComponent ],
 })
 export class QuizModule { }
